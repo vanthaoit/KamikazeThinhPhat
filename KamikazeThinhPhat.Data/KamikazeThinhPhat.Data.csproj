@@ -42,6 +42,21 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KamikazeThinhPhat.Common\KamikazeThinhPhat.Common.csproj">
+      <Project>{319205f4-2941-43e3-b876-9168c90f75f3}</Project>
+      <Name>KamikazeThinhPhat.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KamikazeThinhPhat.Model\KamikazeThinhPhat.Model.csproj">
+      <Project>{49a4924a-f060-4e67-a9b6-ef04d6cbea82}</Project>
+      <Name>KamikazeThinhPhat.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
