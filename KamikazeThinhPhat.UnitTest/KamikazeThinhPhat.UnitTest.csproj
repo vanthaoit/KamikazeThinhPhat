@@ -59,10 +59,6 @@
       <Project>{a32fda88-3636-4417-8f1c-70e37aff6d11}</Project>
       <Name>KamikazeThinhPhat.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KamikazeThinhPhat.Web\KamikazeThinhPhat.Web.csproj">
-      <Project>{56a72b03-b538-4616-8626-b3a5d5018d87}</Project>
-      <Name>KamikazeThinhPhat.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
