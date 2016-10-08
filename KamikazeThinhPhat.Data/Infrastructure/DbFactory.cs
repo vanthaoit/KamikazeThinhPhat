@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KamikazeThinhPhat.Data.Infrastructure
+﻿namespace KamikazeThinhPhat.Data.Infrastructure
 {
-    class DbFactory
+    public class DbFactory : Disposable, IDbFactory
     {
+        private KamikazeThinhPhatDbContext dbContext;
+
+        public KamikazeThinhPhatDbContext Init()
+        {
+            return dbContext ?? (dbContext = new KamikazeThinhPhatDbContext());
+        }
+
+        protected override void DisposeCore()
+        {
+            if (dbContext != null)
+                dbContext.Dispose();
+        }
     }
 }

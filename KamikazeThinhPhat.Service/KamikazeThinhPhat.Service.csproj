@@ -40,7 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonService.cs" />
+    <Compile Include="ProductCategoryService.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KamikazeThinhPhat.Common\KamikazeThinhPhat.Common.csproj">
+      <Project>{319205F4-2941-43E3-B876-9168C90F75F3}</Project>
+      <Name>KamikazeThinhPhat.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KamikazeThinhPhat.Data\KamikazeThinhPhat.Data.csproj">
+      <Project>{D855DEBF-A3D6-4101-B567-EE37835AE810}</Project>
+      <Name>KamikazeThinhPhat.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KamikazeThinhPhat.Model\KamikazeThinhPhat.Model.csproj">
+      <Project>{49A4924A-F060-4E67-A9B6-EF04D6CBEA82}</Project>
+      <Name>KamikazeThinhPhat.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
