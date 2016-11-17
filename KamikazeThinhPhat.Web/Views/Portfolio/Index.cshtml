@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Portfolio Index";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+@{ Html.RenderAction("Banner", "Portfolio");}
+<div class="content_cen about-bg page-bg">
+    <div class="wrapper">
+        <div class="header_wrapper">
+            <ul class="header_wrapper_nav">
+                <li class="current">
+                    <a href="#">
+                        <h3 class="">Lĩnh vực hoạt động</h3>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#">
+                        <h3 class="">Khảo sát</h3>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content_wrapper content_wrapper_portfolio">
+
+            <section class="">
+                <div class="portfolio_container">
+                    <!-- Project One -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="portfolio-detail.html">
+                                <div class="hover01 column picture_border">
+                                    <div>
+                                        <figure>
+                                            <img class="img-responsive img-hover" src="~/Assets/client/images/port-img1.jpg" alt="w3layouts" title="w3layouts">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-5 portfolio_summary">
+                            <p class="portfolio_summary_title">
+                                Khảo sát địa chất
+                            </p>
+                            <div class="portfolio_summary_content content_color">
+                                <span>
+                                    "Đây là thông tin bên thịnh phát cung cấp thông tin chi tiết"
+                                </span>
+                            </div>
+                            
+                            <br />
+                            <a class="detail" href="portfolio-detail.html">
+                         
+                                    <img class="over" src="~/Assets/client/images/btn_detail.png" />
+
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="portfolio-detail.html">
+                                <div class="hover01 column picture_border">
+                                    <div>
+                                        <figure>
+                                            <img class="img-responsive img-hover" src="~/Assets/client/images/port-img1.jpg" alt="w3layouts" title="w3layouts">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-5 portfolio_summary">
+                            <p class="portfolio_summary_title">
+                                Khảo sát địa chất
+                            </p>
+                            <div class="portfolio_summary_content content_color">
+                                <span>
+                                    "Đây là thông tin bên thịnh phát cung cấp thông tin chi tiết"
+                                </span>
+                            </div>
+
+                            <br />
+                            <a class="detail" href="portfolio-detail.html">
+                                <i>
+                                    <img src="~/Assets/client/images/btn_detail.png" />
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

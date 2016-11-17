@@ -12,7 +12,7 @@ namespace KamikazeThinhPhat.Service
 
         void Update(Product product);
 
-        Product Delete(Product product);
+        Product Delete(int id);
 
         IEnumerable<Product> GetAll();
 
@@ -49,9 +49,9 @@ namespace KamikazeThinhPhat.Service
             return productReturn;
         }
 
-        public Product Delete(Product product)
+        public Product Delete(int id)
         {
-            return _productRepository.Delete(product);
+            return _productRepository.Delete(id);
         }
 
         public IEnumerable<Product> GetAll()

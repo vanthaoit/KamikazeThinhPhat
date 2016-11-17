@@ -1,4 +1,41 @@
-﻿.error{
-
-    color:red;
+﻿.container #navbar{
+    padding-top:150px !important;
+    font-family:'graham';
 }
+
+.navbar-right .dropdown-menu{
+    left:auto;
+    right:auto;
+}
+
+#navbar ul .open .dropdown-toggle{
+    background-color: #5e615e !important;
+}
+.dropdown-menu li a:hover{
+    color:#4f7ee3;
+    font-weight:bold;
+    background-color:#b9aeae;
+    text-decoration:none;
+}
+.cl-effect-5 li a span{
+    width:110%;
+}
+.cl-effect-5 li a span::before{
+    color:#ffa800;
+    font-weight:bold;
+    font-size:15px;
+}
+.caret{
+    display:block;
+    margin-left:50%;
+    border-top:2px dashed;
+}
+.footer{
+    background-color:#e5e5e5;
+    
+}
+.footer p{
+    color:darkblue;
+    
+}
+

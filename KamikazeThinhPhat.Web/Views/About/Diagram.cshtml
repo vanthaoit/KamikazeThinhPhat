@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Diagram";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+ 
+}
+
+@{ Html.RenderAction("Banner", "Portfolio");}
+
+<div class="content_cen about-bg page-bg">
+    <div class="wrapper">
+        @{ Html.RenderAction("HeaderWrapperOrganize", "About");}
+        <div class="content_wrapper">
+            <div class="portfolio_container">
+                <div class="row">
+                    @{ Html.RenderAction("MenuOrganize", "About");}
+                    <div class="col-md-9 portfolio_summary">
+                        <div class="portfolio_summary_title">SƠ ĐỒ TỔ CHỨC</div>
+                        <div class="portfolio_summary_content" style="margin-top:30px;">
+
+                            <div class="board_item">
+                                
+                               
+                                <div class="info">
+                                    <div class="image"><img src="/Assets/client/images/SO_DO_TO_CHUC.png"/></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace KamikazeThinhPhat.Web.Controllers
 {
@@ -12,19 +8,27 @@ namespace KamikazeThinhPhat.Web.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
+        public ActionResult Detail()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [ChildActionOnly]
+        public ActionResult Navigation()
         {
-            ViewBag.Message = "Your contact page.";
+            return PartialView();
+        }
 
-            return View();
+        [ChildActionOnly]
+        public ActionResult Slider()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        public ActionResult Footer()
+        {
+            return PartialView();
         }
     }
 }

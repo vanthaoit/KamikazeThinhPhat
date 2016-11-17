@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+}
+<link href="~/Assets/client/css/navigation.css" rel="stylesheet" />
+
+@{ Html.RenderAction("Slider", "Home"); }
+
+@section SliderJS{
+
+    <script type="text/javascript" src="~/Assets/client/js/zslider-1.0.1.js"></script>
+    <script type="text/javascript">
+		    var slider = $('.slider').zslider({
+			    imagePanels: $('.slider-panel'),
+			    ctrlItems: $('.slider-item'),
+			    ctrlItemHoverCls: 'slider-item-selected',
+			    //panelHoverShowFlipBtn: false,
+			    flipBtn: {
+				    container: $('.slider-page'),
+				    preBtn: $('.slider-pre'),
+				    nextBtn: $('.slider-next')
+			    },
+			    callbacks: {
+				    animate: function(imagePanels, ctrlItems, fromIndex, toIndex) {
+					    return true;
+				    }
+			    }
+		    });
+		   
+    </script>
+
+}
+
+
+
+
