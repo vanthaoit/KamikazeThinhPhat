@@ -16,6 +16,8 @@
         $scope.selectAll = selectAll;
         $scope.deleteProduct = deleteProduct;
 
+        $scope.deleteMulti = deleteMulti;
+
         function search() {
             getProducts();
         }
@@ -48,6 +50,32 @@
                 $('#btnDelete').attr('disabled', 'disabled');
             }
         }, true);
+
+        function deleteMulti() {
+
+            var listID = [];
+            var count = 0;
+            $.each($scope.selected, function (i, item) {
+
+                count = count + 1;
+                listID.push(item.ID);
+            });
+
+            $ngBootbox.confirm("Bạn có chắc muốn xóa " + count + " bản ghi !!!").then(function () {
+                var config = {
+                    params: {
+                        checkedProducts:JSON.stringify(listID)
+                    }
+                }
+                apiService.del("api/product/deleteMulti", config, function (result) {
+                    notificationService.displaySuccess("Xóa thành công " + result.data + " bản ghi !!!");
+                    search();
+                }, function (error) {
+                    notificationService.displayWarning("Xóa không thành công !!!");
+                });
+
+            });
+        }
 
         function deleteProduct(id, name) {
           

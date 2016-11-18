@@ -9,6 +9,8 @@ using System.Web.Http;
 using AutoMapper;
 using System;
 using System.Linq;
+using System.Web.Script.Serialization;
+using KamikazeThinhPhat.Web.Infrastructure.Extensions;
 
 namespace KamikazeThinhPhat.Web.Api
 {
@@ -81,6 +83,59 @@ namespace KamikazeThinhPhat.Web.Api
                 return response;
             });
         }
+        [Route("create")]
+        [HttpPost]
+        public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productVm)
+        {
+            HttpResponseMessage response = null;
+            if (!ModelState.IsValid)
+            {
+                response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+            }
+            else
+            {
+                Product newProduct = new Product();
+                newProduct.UpdateProduct(productVm);
+                newProduct.CreatedDate = DateTime.Now;
+                newProduct.CreatedBy = User.Identity.Name;
+                _productService.Add(newProduct);
+                _productService.Save();
+
+                var responseData = Mapper.Map<Product, ProductViewModel>(newProduct);
+                response = request.CreateResponse(HttpStatusCode.Created,responseData);
+                
+            }
+
+            return response;
+
+        }
+        [Route("update")]
+        [HttpPut]
+        public HttpResponseMessage Update(HttpRequestMessage request, ProductViewModel productVm)
+        {
+            HttpResponseMessage response = null;
+            if (!ModelState.IsValid)
+            {
+                response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+            }
+            else
+            {
+                var dbProduct = _productService.GetById(productVm.ID);
+                dbProduct.UpdateProduct(productVm);
+                dbProduct.UpdatedDate = DateTime.Now;
+                dbProduct.UpdatedBy = User.Identity.Name;
+                _productService.Update(dbProduct);
+                _productService.Save();
+
+                var responseData = Mapper.Map<Product, ProductViewModel>(dbProduct);
+                response = request.CreateResponse(HttpStatusCode.Created,responseData); 
+            }
+
+
+            return response;
+        }
+
+
         [Route("delete")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
@@ -97,6 +152,31 @@ namespace KamikazeThinhPhat.Web.Api
                     _productService.Save();
                     var responseData = Mapper.Map<Product,ProductViewModel>(elseProducts);
                     response = request.CreateResponse(HttpStatusCode.Created,responseData);
+                }
+                return response;
+            });
+        }
+        [Route("deleteMulti")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(HttpRequestMessage request, string checkedProducts)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+                }
+                else
+                {
+                    var listProductID = new JavaScriptSerializer().Deserialize<List<int>>(checkedProducts);
+                    foreach (var item in listProductID)
+                    {
+                        _productService.Delete(item);
+                    }
+                    _productService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.OK,listProductID.Count);
                 }
                 return response;
             });
