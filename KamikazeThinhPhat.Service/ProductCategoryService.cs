@@ -52,7 +52,10 @@ namespace KamikazeThinhPhat.Service
 
         public IEnumerable<ProductCategory> GetAll(string keyword)
         {
-            return _productCategoryRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            if (!string.IsNullOrEmpty(keyword))
+                return _productCategoryRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            else
+                return _productCategoryRepository.GetAll();
         }
 
         public IEnumerable<ProductCategory> GetAllByParentId(int ParentId)

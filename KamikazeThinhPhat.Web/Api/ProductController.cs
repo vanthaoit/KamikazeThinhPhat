@@ -1,16 +1,16 @@
-﻿using KamikazeThinhPhat.Model.Models;
+﻿using AutoMapper;
+using KamikazeThinhPhat.Model.Models;
 using KamikazeThinhPhat.Service;
 using KamikazeThinhPhat.Web.Infrastructure.Core;
+using KamikazeThinhPhat.Web.Infrastructure.Extensions;
 using KamikazeThinhPhat.Web.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using AutoMapper;
-using System;
-using System.Linq;
 using System.Web.Script.Serialization;
-using KamikazeThinhPhat.Web.Infrastructure.Extensions;
 
 namespace KamikazeThinhPhat.Web.Api
 {
@@ -27,6 +27,7 @@ namespace KamikazeThinhPhat.Web.Api
         }
 
         #endregion Initialize
+
         [Route("getallparents")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
@@ -83,32 +84,35 @@ namespace KamikazeThinhPhat.Web.Api
                 return response;
             });
         }
+
         [Route("create")]
         [HttpPost]
         public HttpResponseMessage Create(HttpRequestMessage request, ProductViewModel productVm)
         {
-            HttpResponseMessage response = null;
-            if (!ModelState.IsValid)
+            return CreateHttpResponse(request, () =>
             {
-                response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
-            }
-            else
-            {
-                Product newProduct = new Product();
-                newProduct.UpdateProduct(productVm);
-                newProduct.CreatedDate = DateTime.Now;
-                newProduct.CreatedBy = User.Identity.Name;
-                _productService.Add(newProduct);
-                _productService.Save();
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    Product newProduct = new Product();
+                    newProduct.UpdateProduct(productVm);
+                    newProduct.CreatedDate = DateTime.Now;
+                    newProduct.CreatedBy = User.Identity.Name;
+                    _productService.Add(newProduct);
+                    _productService.Save();
 
-                var responseData = Mapper.Map<Product, ProductViewModel>(newProduct);
-                response = request.CreateResponse(HttpStatusCode.Created,responseData);
-                
-            }
+                    var responseData = Mapper.Map<Product, ProductViewModel>(newProduct);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
 
-            return response;
-
+                return response;
+            });
         }
+
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, ProductViewModel productVm)
@@ -116,7 +120,7 @@ namespace KamikazeThinhPhat.Web.Api
             HttpResponseMessage response = null;
             if (!ModelState.IsValid)
             {
-                response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+                response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
             }
             else
             {
@@ -128,34 +132,34 @@ namespace KamikazeThinhPhat.Web.Api
                 _productService.Save();
 
                 var responseData = Mapper.Map<Product, ProductViewModel>(dbProduct);
-                response = request.CreateResponse(HttpStatusCode.Created,responseData); 
+                response = request.CreateResponse(HttpStatusCode.Created, responseData);
             }
-
 
             return response;
         }
-
 
         [Route("delete")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
-            return CreateHttpResponse(request, () => {
+            return CreateHttpResponse(request, () =>
+            {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
                 {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
                     var elseProducts = _productService.Delete(id);
                     _productService.Save();
-                    var responseData = Mapper.Map<Product,ProductViewModel>(elseProducts);
-                    response = request.CreateResponse(HttpStatusCode.Created,responseData);
+                    var responseData = Mapper.Map<Product, ProductViewModel>(elseProducts);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
                 return response;
             });
         }
+
         [Route("deleteMulti")]
         [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, string checkedProducts)
@@ -165,7 +169,7 @@ namespace KamikazeThinhPhat.Web.Api
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
                 {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
@@ -176,11 +180,10 @@ namespace KamikazeThinhPhat.Web.Api
                     }
                     _productService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.OK,listProductID.Count);
+                    response = request.CreateResponse(HttpStatusCode.OK, listProductID.Count);
                 }
                 return response;
             });
         }
-
     }
 }

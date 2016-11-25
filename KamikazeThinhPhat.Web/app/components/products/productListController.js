@@ -79,7 +79,7 @@
 
         function deleteProduct(id, name) {
           
-            $ngBootbox.confirm("Bạn có chắc muốn xóa sản phẩm " + name + "với ID = " + id + " ?").then(function () {
+            $ngBootbox.confirm("Bạn có chắc muốn xóa sản phẩm " + name + " với ID = " + id + " ?").then(function () {
                 
                 var config = {
                     params: {
@@ -102,7 +102,7 @@
                 params: {
                     keyword: $scope.keyword,
                     page: page,
-                    pageSize: 2
+                    pageSize: 5
                 }
             }
             apiService.get('/api/product/getall', config, function (result) {

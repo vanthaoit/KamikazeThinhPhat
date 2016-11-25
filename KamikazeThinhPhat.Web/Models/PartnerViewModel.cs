@@ -1,6 +1,6 @@
 ﻿namespace KamikazeThinhPhat.Web.Models
 {
-    public class SlideViewModel
+    public class PartnerViewModel
     {
         public int ID { set; get; }
 
