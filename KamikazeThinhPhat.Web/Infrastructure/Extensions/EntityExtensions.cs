@@ -64,7 +64,6 @@ namespace KamikazeThinhPhat.Web.Infrastructure.Extensions
             productCategory.Image = productCategoryVm.Image;
             productCategory.HomeFlag = productCategoryVm.HomeFlag;
 
-
             productCategory.CreatedDate = productCategoryVm.CreatedDate;
             productCategory.CreatedBy = productCategoryVm.CreatedBy;
             productCategory.UpdatedDate = productCategoryVm.UpdatedDate;
@@ -94,6 +93,18 @@ namespace KamikazeThinhPhat.Web.Infrastructure.Extensions
             post.MetaKeyword = postVm.MetaKeyword;
             post.MetaDescription = postVm.MetaDescription;
             post.Status = postVm.Status;
+        }
+
+        public static void UpdateSlide(this Slide slide, SlideViewModel slideVm)
+        {
+            slide.ID = slideVm.ID;
+            slide.Name = slideVm.Name;
+            slide.Description = slideVm.Description;
+            slide.Content = slideVm.Content;
+            slide.Image = slideVm.Image;
+            slide.Url = slideVm.Url;
+            slide.DisplayOrder = slideVm.DisplayOrder;
+            slide.Status = slideVm.Status;
         }
     }
 }

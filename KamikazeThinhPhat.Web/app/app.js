@@ -2,7 +2,9 @@
 
 (function () {
     angular.module('kamikazeThinhPhat',
-                    ['kamikazeThinhPhat.products',
+                    [
+                    'kamikazeThinhPhat.slides',
+                    'kamikazeThinhPhat.products',
                     'kamikazeThinhPhat.product_categories',
                     'kamikazeThinhPhat.common'])
                     .config(config);

@@ -202,6 +202,7 @@
   <ItemGroup>
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="Api\ProductController.cs" />
+    <Compile Include="Api\SlideController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -4844,6 +4845,16 @@
     <Content Include="AppSettings.config" />
     <Content Include="ConnectionStrings.config" />
     <Content Include="Libs\CKFinder.dll" />
+    <Content Include="UploadedFiles\files\banner1.jpg" />
+    <Content Include="UploadedFiles\files\banner2.jpg" />
+    <Content Include="UploadedFiles\files\banner3.jpg" />
+    <Content Include="UploadedFiles\files\banner_2.jpg" />
+    <Content Include="UploadedFiles\files\Hinhnendl_com---Rung-cay %286%29.jpg" />
+    <Content Include="UploadedFiles\images\17.jpg" />
+    <Content Include="UploadedFiles\images\23czth4m524574tmhcdjppsw9IMG_20151021_163821.jpg" />
+    <Content Include="UploadedFiles\images\35kv.jpg" />
+    <Content Include="UploadedFiles\images\50618110.jpg" />
+    <Content Include="UploadedFiles\images\agge.JPG" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4855,7 +4866,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\partners\" />
-    <Folder Include="UploadedFiles\" />
+    <Folder Include="Views\Slide\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

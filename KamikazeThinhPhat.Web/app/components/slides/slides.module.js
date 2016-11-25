@@ -5,7 +5,7 @@
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function config() {
+    function config($stateProvider, $urlRouterProvider) {
 
         $stateProvider
            .state('slides', {
