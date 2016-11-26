@@ -18,6 +18,7 @@
 
         function addSlide() {
             //$scope.slide.Image = JSON.stringify($scope.Image);
+            $scope.slide.Url = $scope.slide.Image;
             apiService.post("api/slide/create", $scope.slide, function (result) {
                 notificationService.displaySuccess("Bạn đã thêm thành công " + result.data.Name + " !!!");
                 $state.go("slides");

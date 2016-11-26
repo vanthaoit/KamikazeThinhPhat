@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace KamikazeThinhPhat.Web.Api
 {
@@ -65,6 +66,27 @@ namespace KamikazeThinhPhat.Web.Api
             });
         }
 
+        [Route("getbyid/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request,()=> {
+                HttpResponseMessage response = null;
+
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var dbSlideGetById = _slideService.GetById(id);
+                    var responseData = Mapper.Map<Slide, SlideViewModel>(dbSlideGetById);
+                    response = request.CreateResponse(HttpStatusCode.OK,responseData);
+                }
+                return response;
+            });
+        }
+
         [Route("create")]
         [HttpPost]
         public HttpResponseMessage Create(HttpRequestMessage request, SlideViewModel slideVm)
@@ -88,6 +110,78 @@ namespace KamikazeThinhPhat.Web.Api
                 }
 
                 return response;
+            });
+        }
+        [Route("update")]
+        [HttpPut]
+        public HttpResponseMessage Update(HttpRequestMessage request, SlideViewModel slideVm)
+        {
+            return CreateHttpResponse(request,()=> {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+                }
+                else
+                {
+                    var dbUpdateSlide = _slideService.GetById(slideVm.ID);
+                    dbUpdateSlide.UpdateSlide(slideVm);
+                    _slideService.Update(dbUpdateSlide);
+                    _slideService.Save();
+                    var responseData = Mapper.Map<Slide, SlideViewModel>(dbUpdateSlide);
+                    response = request.CreateResponse(HttpStatusCode.Created,dbUpdateSlide);
+                }
+
+                return response;
+
+            });
+        }
+        [Route("delete")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () => {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+                }
+                else
+                {
+                    var deleteSlide = _slideService.Delete(id);
+                    _slideService.Save();
+                    var responseData = Mapper.Map<Slide, SlideViewModel>(deleteSlide);
+                    response = request.CreateResponse(HttpStatusCode.Created,responseData);
+                }
+
+                return response;
+
+            });
+        }
+        [Route("deleteMulti")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(HttpRequestMessage request, string checkSlides)
+        {
+            return CreateHttpResponse(request,()=> {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
+                }
+                else
+                {
+                    var listSlideId = new JavaScriptSerializer().Deserialize<List<int>>(checkSlides);
+                    foreach(var item in listSlideId)
+                    {
+                        _slideService.Delete(item);
+
+                    }
+                    _slideService.Save();
+                    response = request.CreateResponse(HttpStatusCode.OK, listSlideId.Count);
+                }
+
+                return response;
+
             });
         }
     }
