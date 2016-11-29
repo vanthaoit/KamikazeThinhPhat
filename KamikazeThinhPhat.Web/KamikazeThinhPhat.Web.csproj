@@ -271,6 +271,7 @@
     <Content Include="app\shared\modules\kamikazeThinhPhat.common.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\authenticationService.js" />
+    <Content Include="app\shared\services\commonService.js" />
     <Content Include="app\shared\services\notificationService.js" />
     <Content Include="app\shared\views\baseView.html" />
     <Content Include="Assets\admin\css\AdminLTE.css" />

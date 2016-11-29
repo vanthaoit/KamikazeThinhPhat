@@ -1,5 +1,7 @@
 ﻿@{
     var strUrl = HttpContext.Current.Request.Url.AbsolutePath;
+    var navigationMenu = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductCategoryViewModel>)ViewBag.NavigationMenu;
+    var navigationMenuChild = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductCategoryViewModel>)ViewBag.NavigationMenuChild;
 }
 <div class="navbar-wrapper">
     <div class="container">
@@ -15,107 +17,77 @@
                     <a class="navbar-brand" href="default.html"><h1>ThinhPhat CSJ</h1></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
+
                     <ul class="nav navbar-nav navbar-right">
-                        @if (strUrl.Contains("default") || strUrl.Contains("home"))
+                        @if (navigationMenu.Count() > 0)
                         {
-                            <li class="active"><a href="default.html"><span data-hover="Trang chủ">Trang chủ</span></a></li>
-                        }
-                        else
-                        {
-                            <li><a href="default.html"><span data-hover="Trang chủ">Trang chủ</span></a></li>
-                        }
-                        @if (strUrl.Contains("about"))
-                        {
-                            <li class="active">
-                                <a href="about-index.html" class="dropdown-toggle">
-                                    <span data-hover="Giới thiệu">Giới thiệu</span>
-                                </a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <li><a href="about-index.html">Vài nét về Thịnh Phát</a></li>
-                                    <li><a href="about-directorate.html">Cơ cấu tổ chức</a></li>
-                                </ul>
-                                <span class="line1">/</span>
-                            </li>
+                            var count = 0;
+                            var countSub = 0;
+                            foreach (var item in navigationMenu)
+                            {
+                                count = count + 1;
+                                <li>
+                                    <a href="about-index.html" class="dropdown-toggle">
+                                        <span data-hover="@item.Name">@item.Name</span>
+                                    </a>
 
-                        }
-                        else
-                        {
-                            <li>
-                                <a href="about-index.html" class="dropdown-toggle">
-                                    <span data-hover="Giới thiệu">Giới thiệu</span>
-                                </a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <li><a href="about-index.html">Vài nét về Thịnh Phát</a></li>
-                                    <li><a href="about-directorate.html">Cơ cấu tổ chức</a></li>
-                                </ul>
-                                <span class="line1">/</span>
-                            </li>
-                        }
+                                    @if (navigationMenuChild.Count() > 0)
+                                    {
+                                        foreach (var tamp in navigationMenuChild)
+                                        {
+                                            if (item.ID == tamp.ParentID)
+                                            {
+                                                countSub = countSub + 1;
+                                            }
+                                            if (countSub > 0)
+                                            {
+                                                break;
+                                            }
 
-                        @if (strUrl.Contains("portfolio"))
-                        {
-                            <li class="dropdown active">
-                                <a href="portfolio-index.html" class="dropdown-toggle">
-                                    <span data-hover="Lĩnh vực hoạt động">Lĩnh vực hoạt động</span>
-                                    @*<p class="caret"></p>*@
-                                </a>
+                                        }
+                                        if (countSub > 0)
+                                        {
+                                            <ul class="dropdown-menu multi-column columns-3">
+                                                <li>
+                                                    @foreach (var itemChild in navigationMenuChild)
+                                                    {
+                                                        if (itemChild.ParentID == item.ID)
+                                                        {
 
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <li><a href="portfolio-index.html">Khảo sát</a></li>
-                                    <li><a href="products.html">Wallets</a></li>
-                                    <li><a href="products.html">Shoes</a></li>
-                                    <li><a href="products.html">Watches</a></li>
-                                    <li><a href="products.html"> Underwear </a></li>
-                                    <li><a href="products.html">Accessories</a></li>
-                                </ul>
+                                                            <a href="about-index.html">@itemChild.Name</a>
 
-                                <span class="line1">/</span>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="dropdown">
-                                <a href="portfolio-index.html" class="dropdown-toggle">
-                                    <span data-hover="Lĩnh vực hoạt động">Lĩnh vực hoạt động</span>
-                                    @*<p class="caret"></p>*@
-                                </a>
+                                                        }
+                                                    }
+                                                </li>
+                                            </ul>
+                                        }
+                                        else
+                                        {
+                                            <ul class="multi-column columns-3">
+                                                <li>
+                                                    @foreach (var itemChild in navigationMenuChild)
+                                                    {
+                                                        if (itemChild.ParentID == item.ID)
+                                                        {
 
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <li><a href="portfolio-index.html">Khảo sát</a></li>
-                                    <li><a href="products.html">Wallets</a></li>
-                                    <li><a href="products.html">Shoes</a></li>
-                                    <li><a href="products.html">Watches</a></li>
-                                    <li><a href="products.html"> Underwear </a></li>
-                                    <li><a href="products.html">Accessories</a></li>
-                                </ul>
+                                                            <a href="about-index.html">@itemChild.Name</a>
 
-                                <span class="line1">/</span>
-                            </li>
-                        }
+                                                        }
+                                                    }
+                                                </li>
+                                            </ul>
+                                        }
 
-                        @if (strUrl.Contains("partner"))
-                        {
-                            <li class="active"><a href="partner-index.html" class="dropdown-toggle"><span data-hover="Đối tác">Đối tác</span></a><span class="line1">/</span></li>
-                        }
-                        else
-                        {
-                            <li><a href="partner-index.html" class="dropdown-toggle"><span data-hover="Đối tác">Đối tác</span></a><span class="line1">/</span></li>
-                        }
-                        @if (strUrl.Contains("ledger"))
-                        {
-                            <li class="active"><a href="ledger-index.html" class="dropdown-toggle"><span data-hover="Hồ sơ pháp lý">Hồ sơ pháp lý</span></a><span class="line1">/</span></li>
-                        }
-                        else
-                        {
-                            <li><a href="ledger-index.html" class="dropdown-toggle"><span data-hover="Hồ sơ pháp lý">Hồ sơ pháp lý</span></a><span class="line1">/</span></li>
-                        }
-                        @if (strUrl.Contains("contact"))
-                        {
-                            <li class="active"><a href="contact-index.html" class="dropdown-toggle"><span data-hover="Liên hệ">Liên hệ</span></a><span class="line1">/</span></li>
-                        }
-                        else
-                        {
-                            <li><a href="contact-index.html" class="dropdown-toggle"><span data-hover="Liên hệ">Liên hệ</span></a><span class="line1">/</span></li>
+                                    }
+                                    @if (count > 1)
+                                    {
+                                        <span class="line1">/</span>
+                                    }
+
+                                </li>
+                                countSub = 0;
+
+                            }
                         }
                     </ul>
                 </div>

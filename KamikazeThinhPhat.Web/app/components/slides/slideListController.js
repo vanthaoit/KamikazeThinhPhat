@@ -7,6 +7,11 @@
     function slideListController($scope, apiService, notificationService, $ngBootbox, $filter) {
         $scope.slides = [];
 
+        $scope.ckeditorOptions = {
+            languague: 'vi',
+            height: '200px'
+        }
+
         $scope.page = 0;
         $scope.pagesCount = 0;
 
