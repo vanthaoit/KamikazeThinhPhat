@@ -6,6 +6,15 @@
 .navbar-right .dropdown-menu{
     left:auto;
     right:auto;
+    min-width:0px !important;
+}
+.navbar-right .dropdown-menu li .dropdown-menu-sub{
+    left:100%;
+    top:auto;
+    margin-top:-30px;
+}
+.navbar-right li .dropdown-menu-sub li{
+    position:relative;
 }
 
 #navbar ul .open .dropdown-toggle{

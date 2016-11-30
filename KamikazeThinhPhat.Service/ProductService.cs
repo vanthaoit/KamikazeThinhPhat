@@ -3,6 +3,7 @@ using KamikazeThinhPhat.Data.Repositories;
 using KamikazeThinhPhat.Model.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace KamikazeThinhPhat.Service
 {
@@ -17,6 +18,8 @@ namespace KamikazeThinhPhat.Service
         IEnumerable<Product> GetAll();
 
         IEnumerable<Product> GetAll(string keyword);
+
+        IEnumerable<Product> GetAllByCategoryId(int id);
 
         IEnumerable<Product> GetLasted(int top);
 
@@ -65,6 +68,11 @@ namespace KamikazeThinhPhat.Service
                 return _productRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
             else
                 return _productRepository.GetAll();
+        }
+
+        public IEnumerable<Product> GetAllByCategoryId(int id)
+        {
+            return _productRepository.GetMulti(x=>x.CategoryID == id);
         }
 
         public Product GetById(int id)

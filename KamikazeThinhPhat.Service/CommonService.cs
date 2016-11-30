@@ -12,6 +12,8 @@ namespace KamikazeThinhPhat.Service
     {
         Footer GetFooter();
 
+        List<ProductCategory> GetBreadcrumb(int childId);
+  
         IEnumerable<Slide> GetSlide();
 
         IEnumerable<ProductCategory> GetNavigationMenu();
@@ -52,6 +54,28 @@ namespace KamikazeThinhPhat.Service
         public IEnumerable<ProductCategory> GetNavigationMenuChild()
         {
             return _productCategoryRepository.GetMulti(x => x.Status && x.ParentID != null).OrderBy(x=>x.DisplayOrder);
+        }
+
+        public List<ProductCategory> GetBreadcrumb(int childId)
+        {
+            List<int> familyTree= new List<int>();
+            List<ProductCategory> responseBreadcrumb = new List<ProductCategory>();
+            int id = childId;
+            familyTree.Add(id);
+            while (id != 0)
+            {
+                var tampFather = _productCategoryRepository.GetSingleById(id);
+                id = tampFather.ParentID.HasValue ? tampFather.ParentID.Value : 0;
+                familyTree.Add(id);
+                
+            }
+            for(int i = familyTree.Count()-2; i >=0; i--)
+            {
+                int idTamp = familyTree[i];
+                var item = _productCategoryRepository.GetSingleById(familyTree[i]);
+                responseBreadcrumb.Add(new ProductCategory() {ID = item.ID,Name = item.Name,Alias = item.Alias,MetaKeyword = item.MetaKeyword,Status = item.Status });
+            }
+            return responseBreadcrumb;
         }
     }
 }

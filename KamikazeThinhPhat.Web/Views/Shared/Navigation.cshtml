@@ -1,8 +1,10 @@
 ﻿@{
     var strUrl = HttpContext.Current.Request.Url.AbsolutePath;
+
     var navigationMenu = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductCategoryViewModel>)ViewBag.NavigationMenu;
     var navigationMenuChild = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductCategoryViewModel>)ViewBag.NavigationMenuChild;
 }
+
 <div class="navbar-wrapper">
     <div class="container">
         <nav class="navbar navbar-inverse navbar-static-top cl-effect-5">
@@ -19,6 +21,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
 
                     <ul class="nav navbar-nav navbar-right">
+
                         @if (navigationMenu.Count() > 0)
                         {
                             var count = 0;
@@ -26,65 +29,152 @@
                             foreach (var item in navigationMenu)
                             {
                                 count = count + 1;
-                                <li>
-                                    <a href="about-index.html" class="dropdown-toggle">
-                                        <span data-hover="@item.Name">@item.Name</span>
-                                    </a>
-
-                                    @if (navigationMenuChild.Count() > 0)
-                                    {
-                                        foreach (var tamp in navigationMenuChild)
+                                var Url = "/" + item.MetaKeyword + "-index.html";
+                                if (strUrl.Contains(item.MetaKeyword))
+                                {
+                                    <li class="active">
+                                        <a href="@Url" class="dropdown-toggle">
+                                            <span data-hover="@item.Name">@item.Name</span>
+                                        </a>
+                                        @if (navigationMenuChild.Count() > 0)
                                         {
-                                            if (item.ID == tamp.ParentID)
+                                            foreach (var tamp in navigationMenuChild)
                                             {
-                                                countSub = countSub + 1;
+                                                if (item.ID == tamp.ParentID)
+                                                {
+                                                    countSub = countSub + 1;
+                                                    break;
+                                                }
+
                                             }
                                             if (countSub > 0)
                                             {
-                                                break;
+                                                <ul class="dropdown-menu multi-column columns-3">
+
+                                                    @foreach (var itemChild in navigationMenuChild)
+                                                    {
+                                                        if (itemChild.ParentID == item.ID)
+                                                        {
+                                                            var UrlChild = "/" + item.MetaKeyword + "-" + itemChild.Alias +"-"+itemChild.ID+ ".html";
+                                                            <li>
+                                                                <a href="@UrlChild">@itemChild.Name</a>
+                                                                <ul class="dropdown-menu multi-column columns-3 dropdown-menu-sub">
+
+                                                                    @foreach (var itemChildChild in navigationMenuChild)
+                                                                    {
+                                                                        if (itemChildChild.ParentID == itemChild.ID)
+                                                                        {
+                                                                            var UrlChildchild = "/" + itemChildChild.Alias + "-" + itemChildChild.ID+ ".html";
+
+                                                                            <li><a href="@UrlChildchild">@itemChildChild.Name</a></li>
+
+                                                                        }
+                                                                    }
+                                                                </ul>
+                                                            </li>
+
+                                                        }
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <ul class="multi-column columns-3">
+                                                    <li>
+                                                        @foreach (var itemChild in navigationMenuChild)
+                                                        {
+                                                            if (itemChild.ParentID == item.ID)
+                                                            {
+                                                                var UrlChild = "/" + item.MetaKeyword + "-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                                <a href="@UrlChild">@itemChild.Name</a>
+
+                                                            }
+                                                        }
+                                                    </li>
+                                                </ul>
                                             }
 
                                         }
-                                        if (countSub > 0)
+                                        @if (count > 1)
                                         {
-                                            <ul class="dropdown-menu multi-column columns-3">
-                                                <li>
+                                            <span class="line1">/</span>
+                                        }
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="@Url" class="dropdown-toggle">
+                                            <span data-hover="@item.Name">@item.Name</span>
+                                        </a>
+                                        @if (navigationMenuChild.Count() > 0)
+                                        {
+                                            foreach (var tamp in navigationMenuChild)
+                                            {
+                                                if (item.ID == tamp.ParentID)
+                                                {
+                                                    countSub = countSub + 1;
+                                                    break;
+                                                }
+
+                                            }
+
+                                            if (countSub > 0)
+                                            {
+                                                <ul class="dropdown-menu multi-column columns-3">
+
                                                     @foreach (var itemChild in navigationMenuChild)
                                                     {
                                                         if (itemChild.ParentID == item.ID)
                                                         {
+                                                            var UrlChild = "/" + item.MetaKeyword + "-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                            <li>
+                                                                <a href="@UrlChild">@itemChild.Name</a>
+                                                                <ul class="dropdown-menu multi-column columns-3 dropdown-menu-sub">
 
-                                                            <a href="about-index.html">@itemChild.Name</a>
+                                                                    @foreach (var itemChildChild in navigationMenuChild)
+                                                                    {
+                                                                        if (itemChildChild.ParentID == itemChild.ID)
+                                                                        {
+                                                                            var UrlChildchild = "/" + itemChildChild.Alias + "-" + itemChildChild.ID + ".html";
+
+                                                                            <li><a href="@UrlChildchild">@itemChildChild.Name</a></li>
+
+                                                                        }
+                                                                    }
+                                                                </ul>
+                                                            </li>
 
                                                         }
                                                     }
-                                                </li>
-                                            </ul>
-                                        }
-                                        else
-                                        {
-                                            <ul class="multi-column columns-3">
-                                                <li>
-                                                    @foreach (var itemChild in navigationMenuChild)
-                                                    {
-                                                        if (itemChild.ParentID == item.ID)
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <ul class="multi-column columns-3">
+                                                    <li>
+                                                        @foreach (var itemChild in navigationMenuChild)
                                                         {
+                                                            if (itemChild.ParentID == item.ID)
+                                                            {
 
-                                                            <a href="about-index.html">@itemChild.Name</a>
+                                                                var UrlChild = "/" + item.MetaKeyword + "-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                                <a href="@UrlChild">@itemChild.Name</a>
 
+                                                            }
                                                         }
-                                                    }
-                                                </li>
-                                            </ul>
+                                                    </li>
+                                                </ul>
+                                            }
+
                                         }
+                                        @if (count > 1)
+                                        {
+                                            <span class="line1">/</span>
+                                        }
+                                    </li>
+                                }
 
-                                    }
-                                    @if (count > 1)
-                                    {
-                                        <span class="line1">/</span>
-                                    }
-
-                                </li>
                                 countSub = 0;
 
                             }

@@ -1,22 +1,41 @@
-﻿@{
+﻿@model IEnumerable<KamikazeThinhPhat.Web.Models.ProductViewModel>
+@{
     ViewBag.Title = "Portfolio Index";
     Layout = "~/Views/Shared/Layouts.cshtml";
+    var listBreadcrum = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductCategoryViewModel>)ViewBag.listBreadcrumb;
 }
 @{ Html.RenderAction("Banner", "Portfolio");}
 <div class="content_cen about-bg page-bg">
     <div class="wrapper">
         <div class="header_wrapper">
             <ul class="header_wrapper_nav">
-                <li class="current">
-                    <a href="#">
-                        <h3 class="">Lĩnh vực hoạt động</h3>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="#">
-                        <h3 class="">Khảo sát</h3>
-                    </a>
-                </li>
+                @if (listBreadcrum.Count() > 0)
+                {
+                    var isfirst = true;
+                    foreach (var itemBreadcrum in listBreadcrum)
+                    {
+
+                        if (isfirst)
+                        {
+                            isfirst = false;
+                            <li class="current">
+                                <a href="#">
+                                    <h3 class="">@itemBreadcrum.Name</h3>
+                                </a>
+                            </li>
+                           
+                        }
+                        else
+                        {
+                            <li class="">
+                                <a href="#">
+                                    <h3 class="">@itemBreadcrum.Name</h3>
+                                </a>
+                            </li>
+                        }
+                    }
+                }
+                
             </ul>
         </div>
         <div class="content_wrapper content_wrapper_portfolio">
@@ -24,68 +43,52 @@
             <section class="">
                 <div class="portfolio_container">
                     <!-- Project One -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="portfolio-detail.html">
-                                <div class="hover01 column picture_border">
-                                    <div>
-                                        <figure>
-                                            <img class="img-responsive img-hover" src="~/Assets/client/images/port-img1.jpg" alt="w3layouts" title="w3layouts">
-                                        </figure>
-                                    </div>
+                    @if (Model.Count() > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            var Url = "/portfolio.detail-"+item.Alias+"-"+item.ID+".html";
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="@Url">
+                                        <div class="hover01 column picture_border">
+                                            <div>
+                                                <figure>
+                                                    <img class="img-responsive img-hover" src="@item.Image" alt="@item.Name" title="@item.Name">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="col-md-5 portfolio_summary">
-                            <p class="portfolio_summary_title">
-                                Khảo sát địa chất
-                            </p>
-                            <div class="portfolio_summary_content content_color">
-                                <span>
-                                    "Đây là thông tin bên thịnh phát cung cấp thông tin chi tiết"
-                                </span>
-                            </div>
-                            
-                            <br />
-                            <a class="detail" href="portfolio-detail.html">
-                         
-                                    <img class="over" src="~/Assets/client/images/btn_detail.png" />
-
-                            </a>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <br />
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="portfolio-detail.html">
-                                <div class="hover01 column picture_border">
-                                    <div>
-                                        <figure>
-                                            <img class="img-responsive img-hover" src="~/Assets/client/images/port-img1.jpg" alt="w3layouts" title="w3layouts">
-                                        </figure>
+                                <div class="col-md-5 portfolio_summary">
+                                    <p class="portfolio_summary_title">
+                                        @item.Name
+                                    </p>
+                                    <div class="portfolio_summary_content content_color">
+                                        <span>
+                                            @item.Description
+                                        </span>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-5 portfolio_summary">
-                            <p class="portfolio_summary_title">
-                                Khảo sát địa chất
-                            </p>
-                            <div class="portfolio_summary_content content_color">
-                                <span>
-                                    "Đây là thông tin bên thịnh phát cung cấp thông tin chi tiết"
-                                </span>
-                            </div>
 
+                                    <br />
+                                    <a class="detail" href="@Url">
+
+                                        <img class="over" src="~/Assets/client/images/btn_detail.png" />
+
+                                    </a>
+                                </div>
+                            </div>
+                              <!-- /.row -->
                             <br />
-                            <a class="detail" href="portfolio-detail.html">
-                                <i>
-                                    <img src="~/Assets/client/images/btn_detail.png" />
-                                </i>
-                            </a>
-                        </div>
-                    </div>
+                        }
+                    }
+                    else
+                    {
+                        <p style="color:red">Không tìm thấy dữ liệu</p>
+                    }
+
+                   
+     
                     <hr>
                 </div>
             </section>

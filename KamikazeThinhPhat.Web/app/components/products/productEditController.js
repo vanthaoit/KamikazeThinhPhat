@@ -1,14 +1,21 @@
 ﻿(function (app) {
     app.controller('productEditController', productEditController);
 
-    productEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams'];
+    productEditController.$inject = ['apiService', '$scope', 'notificationService', '$state', '$stateParams', 'commonService'];
 
-    function productEditController(apiService, $scope, notificationService, $state, $stateParams) {
+    function productEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
         $scope.product = {};
         $scope.ckeditorOptions = {
             languague: 'vi',
             height: '200px'
         }
+
+        $scope.GetSeoTitle = GetSeoTitle;
+        function GetSeoTitle() {
+            $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
+        }
+
+
         $scope.UpdateProduct = UpdateProduct;
         $scope.moreImages = [];
        
