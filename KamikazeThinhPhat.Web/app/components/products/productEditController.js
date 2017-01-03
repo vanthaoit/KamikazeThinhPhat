@@ -64,6 +64,9 @@
             }
             finder.popup();
         }
+        $scope.RemoveMoreImage = function(img) {
+            $scope.moreImages.splice(img,1);
+        }
         loadProductCategory();
         loadProductDetail();
     }

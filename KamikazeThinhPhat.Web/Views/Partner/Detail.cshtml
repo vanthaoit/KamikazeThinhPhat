@@ -1,0 +1,67 @@
+﻿@model KamikazeThinhPhat.Web.Models.ProductViewModel
+@{ 
+    ViewBag.Title = "Partner Detail";
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    var productCategory = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductCategoryViewModel>)ViewBag.productCategory;
+    var listMoreImages = (List<string>)ViewBag.listMoreImages;
+
+}
+
+@{ Html.RenderAction("Banner", "Portfolio");}
+
+<div class="content_cen about-bg page-bg">
+    <div class="wrapper">
+        <div class="header_wrapper">
+            <ul class="header_wrapper_nav">
+                @if (productCategory.Count() > 0)
+                {
+                    foreach (var item in productCategory)
+                    {
+                        var Url = "partner-index.html";
+                        <li class="current">
+                            <a href="@Url">
+                                <h3 class="">@item.Name</h3>
+                            </a>
+
+                        </li>
+                    }
+
+                }
+                @if (!string.IsNullOrEmpty(Model.Name))
+                {
+                    <li class="">
+                            <h3 class="">@Model.Name</h3>
+                    </li>
+                }
+
+
+            </ul>
+
+        </div>
+        <div class="content_wrapper">
+            <div class="content_text_area">
+                <div class="content_pic">
+                    <div class="slideshow">
+                        @foreach (var image in listMoreImages)
+                        {
+                           
+                            <img src="@image" width="300" height="300" alt="" title="@Model.Name" class="content_img">
+                            break;
+                        }
+                        
+                    </div>
+                </div>
+
+                <p>
+                    <span style="font-size: 13px;">
+                        @Html.Raw(Model.Content)
+                       
+                    </span>
+                </p>
+
+                <p>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

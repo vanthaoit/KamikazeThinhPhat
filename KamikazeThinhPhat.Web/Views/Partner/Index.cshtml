@@ -1,6 +1,8 @@
-﻿@{
+﻿@model IEnumerable<KamikazeThinhPhat.Web.Models.ProductViewModel>
+@{
     ViewBag.Title = "Partner Index";
     Layout = "~/Views/Shared/Layouts.cshtml";
+    var productCategory = (KamikazeThinhPhat.Web.Models.ProductCategoryViewModel)ViewBag.productCategory;
 }
 
 @{ Html.RenderAction("Banner", "Portfolio");}
@@ -16,70 +18,56 @@
                 </li>
             </ul>
         </div>
-        <section class="content_wrapper our_partner">
+        <section class="content_wrapper content_wrapper_portfolio our_partner">
             <div class="portfolio_container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 blog-w3ls1 portfolio_summary">
-                        <p class="portfolio_summary_title">Danh sách đối tác</p>
-                        <div class="portfolio_summary_content">
-                            <span>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.
-                            </span>
-                        </div>
+                        @if (!string.IsNullOrEmpty(productCategory.Name))
+                        {
+                            <p class="portfolio_summary_title">@productCategory.Description</p>
+                            <div class="portfolio_summary_content">
+                                <span>
+                                    @productCategory.MetaDescription
+                                </span>
+                            </div>
+                        }
                         
+
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 blog-w3ls2">
-                        <div class="agile">
-                            <a href="blogpost.html" class="blogimg-w3ls">
-                                <div class="hover01 column">
-                                    <div>
-                                        <figure><img src="~/Assets/client/images/Thep Posco-SSVina.jpg" alt="w3layouts" class="img-responsive"></figure>
+                    <div class="col-lg-9 col-sm-9 col-sm-12">
+                        @if (@Model.Count() > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                var Url = "partner.detail-"+ item.Alias+"-"+item.ID+".html";
+                                <div class="col-lg-4 col-md-4 col-sm-6 blog-w3ls2">
+                                    <div class="agile">
+                                        <a href="@Url" class="blogimg-w3ls">
+                                            <div class="hover01 column">
+                                                <div>
+                                                    <figure style="padding:10%;"><img src="@item.Image" alt="w3layouts" class="img-responsive"></figure>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="@Url" class="agile_content"><h4>@item.Name</h4></a>
+                                        @*<p class="blog-p2">@item.Description</p>*@
+
+                                        <a href="@Url" class="agile_read_more">
+                                            <p>Read More</p>
+                                            <span class="fa fa-angle-double-right" aria-hidden="true"></span>
+                                        </a>
                                     </div>
                                 </div>
-                            </a>
-                            <a href="blogpost.html" class="agile_content"><h4>Lorem ipsum dolor</h4></a>
-                            <p class="blog-p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <a href="blogpost.html" class="agile_read_more">
-                                <p>Read More</p>
-                                <span class="fa fa-angle-double-right" aria-hidden="true"></span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 blog-w3ls2">
-                        <div class="agile">
-                            <a href="blogpost.html" class="blogimg-w3ls">
-                                <div class="hover01 column">
-                                    <div>
-                                        <figure><img src="~/Assets/client/images/Smart energy.jpg" alt="w3layouts" class="img-responsive"></figure>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="blogpost.html" class="agile_content"><h4>Lorem ipsum dolor</h4></a>
-                            <p class="blog-p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <a href="blogpost.html" class="agile_read_more">
-                                <p>Read More</p>
-                                <span class="fa fa-angle-double-right" aria-hidden="true"></span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 blog-w3ls2">
-                        <div class="agile">
-                            <a href="blogpost.html" class="blogimg-w3ls">
-                                <div class="hover01 column">
-                                    <div>
-                                        <figure><img src="~/Assets/client/images/blog-img1.jpg" alt="w3layouts" class="img-responsive"></figure>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="blogpost.html" class="agile_content"><h4>Lorem ipsum dolor</h4></a>
-                            <p class="blog-p2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <a href="blogpost.html" class="agile_read_more">
-                                <p>Read More</p>
-                                <span class="fa fa-angle-double-right" aria-hidden="true"></span>
-                            </a>
-                        </div>
+                            }
+                        }
+                        
+                   
+                       
                     </div>
                 </div>
+                
+                    
+                
             </div>
         </section>
     </div>

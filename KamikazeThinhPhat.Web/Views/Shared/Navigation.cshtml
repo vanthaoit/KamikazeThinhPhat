@@ -55,7 +55,16 @@
                                                     {
                                                         if (itemChild.ParentID == item.ID)
                                                         {
-                                                            var UrlChild = "/" + item.MetaKeyword + "-" + itemChild.Alias +"-"+itemChild.ID+ ".html";
+                                                            var UrlChild = "";
+                                                            if (itemChild.MetaKeyword=="about")
+                                                            {
+                                                                UrlChild = "/" + item.MetaKeyword + ".index-" + itemChild.Alias +".html";
+                                                            }
+                                                            else
+                                                            {
+                                                                UrlChild = "/" + item.MetaKeyword + ".index-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                            }
+
                                                             <li>
                                                                 <a href="@UrlChild">@itemChild.Name</a>
                                                                 <ul class="dropdown-menu multi-column columns-3 dropdown-menu-sub">
@@ -64,7 +73,7 @@
                                                                     {
                                                                         if (itemChildChild.ParentID == itemChild.ID)
                                                                         {
-                                                                            var UrlChildchild = "/" + itemChildChild.Alias + "-" + itemChildChild.ID+ ".html";
+                                                                            var UrlChildchild = "/"+item.MetaKeyword+".index-" + itemChildChild.Alias + "-" + itemChildChild.ID+ ".html";
 
                                                                             <li><a href="@UrlChildchild">@itemChildChild.Name</a></li>
 
@@ -85,7 +94,15 @@
                                                         {
                                                             if (itemChild.ParentID == item.ID)
                                                             {
-                                                                var UrlChild = "/" + item.MetaKeyword + "-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                                var UrlChild = "";
+                                                                if (itemChild.MetaKeyword=="about")
+                                                                {
+                                                                    UrlChild = "/" + item.MetaKeyword + ".index-" + itemChild.Alias + ".html";
+                                                                }
+                                                                else
+                                                                {
+                                                                    UrlChild = "/" + item.MetaKeyword + ".index-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                                }
                                                                 <a href="@UrlChild">@itemChild.Name</a>
 
                                                             }
@@ -127,7 +144,15 @@
                                                     {
                                                         if (itemChild.ParentID == item.ID)
                                                         {
-                                                            var UrlChild = "/" + item.MetaKeyword + "-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                            var UrlChild = "";
+                                                            if (itemChild.MetaKeyword =="about")
+                                                            {
+                                                                UrlChild = "/" + item.MetaKeyword + ".index-" + itemChild.Alias + ".html";
+                                                            }
+                                                            else
+                                                            {
+                                                                UrlChild = "/" + item.MetaKeyword + ".index-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                            }
                                                             <li>
                                                                 <a href="@UrlChild">@itemChild.Name</a>
                                                                 <ul class="dropdown-menu multi-column columns-3 dropdown-menu-sub">
@@ -136,7 +161,7 @@
                                                                     {
                                                                         if (itemChildChild.ParentID == itemChild.ID)
                                                                         {
-                                                                            var UrlChildchild = "/" + itemChildChild.Alias + "-" + itemChildChild.ID + ".html";
+                                                                            var UrlChildchild = "/" +item.MetaKeyword+".index-"+ itemChildChild.Alias + "-" + itemChildChild.ID + ".html";
 
                                                                             <li><a href="@UrlChildchild">@itemChildChild.Name</a></li>
 
@@ -158,7 +183,15 @@
                                                             if (itemChild.ParentID == item.ID)
                                                             {
 
-                                                                var UrlChild = "/" + item.MetaKeyword + "-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                                var UrlChild = "";
+                                                                if (itemChild.MetaKeyword=="about")
+                                                                {
+                                                                    UrlChild = "/" + item.MetaKeyword + ".index-" + itemChild.Alias + ".html";
+                                                                }
+                                                                else
+                                                                {
+                                                                    UrlChild = "/" + item.MetaKeyword + ".index-" + itemChild.Alias + "-" + itemChild.ID + ".html";
+                                                                }
                                                                 <a href="@UrlChild">@itemChild.Name</a>
 
                                                             }

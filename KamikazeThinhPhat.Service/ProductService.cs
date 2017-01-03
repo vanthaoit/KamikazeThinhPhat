@@ -31,6 +31,8 @@ namespace KamikazeThinhPhat.Service
 
         Product GetById(int id);
 
+        Product GetByAlias(string alias);
+
         void Save();
     }
 
@@ -73,6 +75,11 @@ namespace KamikazeThinhPhat.Service
         public IEnumerable<Product> GetAllByCategoryId(int id)
         {
             return _productRepository.GetMulti(x=>x.CategoryID == id);
+        }
+
+        public Product GetByAlias(string alias)
+        {
+            return _productRepository.GetSingleByCondition(x=>x.Alias == alias);
         }
 
         public Product GetById(int id)

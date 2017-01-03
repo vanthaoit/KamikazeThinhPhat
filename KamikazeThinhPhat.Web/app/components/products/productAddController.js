@@ -59,6 +59,9 @@
             }
             finder.popup();
         }
+        $scope.RemoveMoreImage = function (img) {
+            $scope.moreImages.splice(img, 1);
+        }
         productCategories();
     }
 })(angular.module('kamikazeThinhPhat.products'));

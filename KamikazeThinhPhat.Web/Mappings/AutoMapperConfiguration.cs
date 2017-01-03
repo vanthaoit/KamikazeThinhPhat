@@ -13,6 +13,7 @@ namespace KamikazeThinhPhat.Web.Mappings
             Mapper.CreateMap<ProductCategory, ProductCategoryViewModel>();
             Mapper.CreateMap<PostCategory, PostCategoryViewModel>();
             Mapper.CreateMap<Post, PostViewModel>();
+            Mapper.CreateMap<ContactDetail, ContactDetailViewModel>();
         }
     }
 }

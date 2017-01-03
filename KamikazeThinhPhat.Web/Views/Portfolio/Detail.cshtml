@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/Layouts.cshtml";
     var listBreabcrumb = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductCategoryViewModel>)ViewBag.listBreadcrumb;
 
+    var listRelatedProductCategory = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductCategoryViewModel>)ViewBag.relatedProductCategory;
+
     var moreImages = (List<string>)ViewBag.ListMoreImages;
     var countImage = 0;
 
@@ -11,6 +13,37 @@
 
 @{ Html.RenderAction("Banner", "Portfolio");}
 
+@section FooterJS{
+
+    <script src="~/Assets/client/js/jquery.flexisel.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 3,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+        });
+    </script>
+}
 
 <div class="content_cen about-bg page-bg">
     <div class="wrapper">
@@ -21,7 +54,7 @@
                     var isFirst = true;
                     foreach (var itemBreabcrumb in listBreabcrumb)
                     {
-                        var Url = "/portfolio-" + itemBreabcrumb.MetaKeyword + "-" + itemBreabcrumb.Alias + "-" + itemBreabcrumb.ID + ".html"; ;
+                        var Url = "/portfolio.index" + "-" + itemBreabcrumb.Alias + "-" + itemBreabcrumb.ID + ".html"; ;
                         if (isFirst)
                         {
                             isFirst = false;
@@ -43,13 +76,11 @@
 
                     }
                 }
-                
-                <li class="">
-      
-                        <h3 class="">@Model.Name</h3>
 
+                <li class="">
+
+                    <h3 class="">@Model.Name</h3>
                 </li>
-               
             </ul>
         </div>
         <div class="content_wrapper content_wrapper_portfolio">
@@ -62,8 +93,7 @@
                             <div id="carousel-example-generic" class="carousel slide picture_border" data-ride="carousel">
                                 <!-- Indicators -->
                                 <ol class="carousel-indicators">
-                                    
-                                    
+
                                     @foreach (var item in moreImages)
                                     {
                                         countImage = countImage + 1;
@@ -79,21 +109,19 @@
                                         }
 
                                     }
-                                   
-                                 
                                 </ol>
 
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
-                                    @{ 
+                                    @{
                                         countImage = 0;
                                     }
                                     @foreach (var itemSlide in moreImages)
                                     {
-                                            
+
                                         if (countImage == 0)
                                         {
-                                            countImage = countImage +1;
+                                            countImage = countImage + 1;
                                             <div class="item active">
                                                 <img class="img-responsive" src="@itemSlide" title="@Model.Name">
                                             </div>
@@ -106,7 +134,6 @@
                                         }
 
                                     }
-                                    
                                 </div>
 
                                 <!-- Controls -->
@@ -119,93 +146,53 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 portfolio_summary">
+                        <div class="col-md-5 portfolio_summary">
                             <p class="portfolio_summary_title">
                                 Thông tin chi tiết
                             </p>
                             <div class="portfolio_summary_content content_color">
                                 <span>
-                                    "Đây là thông tin bên thịnh phát cung cấp thông tin chi tiết"
+                                    @Html.Raw(@Model.Content)
                                 </span>
                             </div>
-
-                           
-                            
                         </div>
                     </div>
                     <!-- /.row -->
-                
-                    
+
                     <hr>
                 </div>
             </section>
             <section class="other_area">
                 <h3 class="text-center portfolio_summary_title ">Lĩnh vực hoạt động khác</h3>
-               
+
                 <div class="">
                     <!-- Related Projects Row -->
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-6 port-w3ls">
-                            <a href="blogpost.html">
-                                <div class="hover01 column">
-                                    <div>
-                                        <figure>
-                                            <img class="img-responsive img-hover img-related" src="~/Assets/client/images/port-item-img4.jpg" alt="">
-                                        </figure>
+                    <div class="row" id="flexiselDemo1">
+                        @foreach (var item in listRelatedProductCategory)
+                        {
+                            var Url = "/portfolio.index-"+item.Alias+ "-"+item.ID+".html";
+                            <div class="col-sm-3 col-xs-6 port-w3ls nbs-flexisel-item">
+                                <a href="@Url">
+                                    <div class="hover01 column">
+                                        <div>
+                                            <figure>
+                                                <img class="img-responsive img-hover img-related" src="@item.Image" alt="@item.Name" title="@item.Name">
+                                            </figure>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        }
+                        
 
-                        <div class="col-sm-3 col-xs-6 port-w3ls">
-                            <a href="blogpost.html">
-                                <div class="hover01 column">
-                                    <div>
-                                        <figure>
-                                            <img class="img-responsive img-hover img-related" src="~/Assets/client/images/port-item-img5.jpg" alt="">
-                                        </figure>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-sm-3 col-xs-6 port-w3ls">
-                            <a href="blogpost.html">
-                                <div class="hover01 column">
-                                    <div>
-                                        <figure>
-                                            <img class="img-responsive img-hover img-related" src="~/Assets/client/images/port-item-img6.jpg" alt="">
-                                        </figure>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-sm-3 col-xs-6 port-w3ls">
-                            <a href="blogpost.html">
-                                <div class="hover01 column">
-                                    <div>
-                                        <figure>
-                                            <img class="img-responsive img-hover img-related" src="~/Assets/client/images/port-item-img7.jpg" alt="">
-                                        </figure>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
+                       
                     </div>
                     <!-- /.row -->
+                    
 
-                    <hr>
+                   <hr>
                 </div>
-            </section>	
-
-           
+            </section>
         </div>
-      
-
-        
     </div>
 </div>
-
-

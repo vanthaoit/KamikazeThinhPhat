@@ -24,18 +24,26 @@ namespace KamikazeThinhPhat.Web
             );
 
             routes.MapRoute(
-                name: "About Detail",
-                url: "about-hoi-dong-quan-tri.html",
-                defaults: new { controller = "About", action = "Directorate", id = UrlParameter.Optional },
+                name: "Default Index",
+                url: "default-index.html",
+                defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional,alias = "vai-net-ve-thinh-phat" },
+                namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
+
+            );
+
+            routes.MapRoute(
+                name: "About vai net ve thinh phat",
+                url: "about.index-vai-net-ve-thinh-phat.html",
+                defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional,alias="vai-net-ve-thinh-phat" },
                 namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
 
             );
 
 
             routes.MapRoute(
-                name: "About Diagram",
-                url: "about-so-do-to-chuc.html",
-                defaults: new { controller = "About", action = "Diagram", id = UrlParameter.Optional },
+                name: "About Detail",
+                url: "about.index-co-cau-to-chuc.html",
+                defaults: new { controller = "About", action = "Diagram", id = UrlParameter.Optional,alias ="co-cau-to-chuc" },
                 namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
 
             );
@@ -51,7 +59,7 @@ namespace KamikazeThinhPhat.Web
 
             routes.MapRoute(
                 name: "Portfolio child",
-                url: "portfolio-{metakeyword}-{alias}-{id}.html",
+                url: "portfolio.index-{alias}-{id}.html",
                 defaults: new { controller = "Portfolio", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
 
@@ -84,6 +92,14 @@ namespace KamikazeThinhPhat.Web
             );
 
             routes.MapRoute(
+                name: "Partner Detail",
+                url: "partner.detail-{alias}-{id}.html",
+                defaults: new { controller = "Partner", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
+
+            );
+
+            routes.MapRoute(
               name: "Contact Index",
               url: "contact-index.html",
               defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
@@ -99,6 +115,7 @@ namespace KamikazeThinhPhat.Web
               namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
           );
 
+            
             routes.MapRoute(
                name: "Default",
                url: "{controller}/{action}/{id}",

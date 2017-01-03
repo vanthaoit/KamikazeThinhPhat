@@ -1,5 +1,6 @@
 ﻿using KamikazeThinhPhat.Model.Models;
 using KamikazeThinhPhat.Web.Models;
+using System;
 
 namespace KamikazeThinhPhat.Web.Infrastructure.Extensions
 {
@@ -105,6 +106,15 @@ namespace KamikazeThinhPhat.Web.Infrastructure.Extensions
             slide.Url = slideVm.Url;
             slide.DisplayOrder = slideVm.DisplayOrder;
             slide.Status = slideVm.Status;
+        }
+        public static void UpdateFeedback(this Feedback feedback,FeedbackViewModel feedbackVm)
+        {
+            feedback.ID = feedbackVm.ID;
+            feedback.Name = feedbackVm.Name;
+            feedback.Email = feedbackVm.Email;
+            feedback.Message = feedbackVm.Message;
+            feedback.Status = feedbackVm.Status;
+            feedback.CreatedDate = DateTime.Now;
         }
     }
 }

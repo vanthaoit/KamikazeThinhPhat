@@ -2,6 +2,7 @@
 using KamikazeThinhPhat.Data.Repositories;
 using KamikazeThinhPhat.Model.Models;
 using System.Collections.Generic;
+using System;
 
 namespace KamikazeThinhPhat.Service
 {
@@ -20,6 +21,8 @@ namespace KamikazeThinhPhat.Service
         IEnumerable<ProductCategory> GetAllByParentId(int parentId);
 
         ProductCategory GetById(int id);
+
+        ProductCategory GetByAlias(string alias);
 
         void Save();
     }
@@ -61,6 +64,11 @@ namespace KamikazeThinhPhat.Service
         public IEnumerable<ProductCategory> GetAllByParentId(int ParentId)
         {
             return _productCategoryRepository.GetMulti(x => x.Status && x.ParentID == ParentId);
+        }
+
+        public ProductCategory GetByAlias(string alias)
+        {
+            return _productCategoryRepository.GetSingleByCondition(x=>x.Status && x.Alias.Contains(alias));
         }
 
         public ProductCategory GetById(int id)

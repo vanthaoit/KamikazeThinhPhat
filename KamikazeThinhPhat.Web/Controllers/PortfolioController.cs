@@ -29,11 +29,21 @@ namespace KamikazeThinhPhat.Web.Controllers
 
             return View(dbProductViewModel);
         }
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int id, string alias)
         {
+            string tamp = "khao-sat-dia-chat ";
+            var bo = tamp.Equals(alias);
             var dbProductModel = _productService.GetById(id);
             var listBreadcrumModel = _commonService.GetBreadcrumb(dbProductModel.CategoryID);
 
+            var singleProductCategory = _productCategoryService.GetById(dbProductModel.CategoryID);
+            if (singleProductCategory.ParentID != null)
+            {
+                var listProductCategory = _productCategoryService.GetAllByParentId(singleProductCategory.ParentID.Value);
+                ViewBag.relatedProductCategory = AutoMapper.Mapper.Map<IEnumerable<ProductCategory>,IEnumerable<ProductCategoryViewModel>>(listProductCategory);
+            }
+           
+            
             
             ViewBag.listBreadcrumb = AutoMapper.Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(listBreadcrumModel);
             var dbProductViewModel = AutoMapper.Mapper.Map<Product, ProductViewModel>(dbProductModel);

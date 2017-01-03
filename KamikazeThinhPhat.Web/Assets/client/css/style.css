@@ -26,6 +26,7 @@ input[type="button"],input[type="submit"]{
 h1,h2,h3,h4,h5,h6{
 	margin:0;	
 	padding:0;
+    font-family:'Graham';
 }	
 p{
 	margin:0;
@@ -58,7 +59,10 @@ body {
 	font-weight:100;
 }
 body p {
-	color:#999;
+	color:#f5f5f5;
+    font-family:'Graham';
+    font-size:10.5pt;
+    padding:0.1%;
 }
 /*-- navigation section --*/
 .navbar-wrapper {
@@ -1286,6 +1290,24 @@ section.portfolio-w3ls a.port-w3ls:hover {
 }
 /*-- /Portfolio Page --*/
 /*-- Portfolio Item Page --*/
+.nbs-flexisel-inner{
+    overflow:hidden;
+    margin:auto;
+}
+.nbs-flexisel-item{
+    float:left;
+    margin:5px;
+    padding:0px;
+    cursor:pointer;
+    position:relative;
+    line-height:0px;
+}
+.nbs-flexisel-ul{
+    position:relative;
+    margin:0px;
+    width:9999px;
+    display:block;
+}
 section.portfolio-item-w3ls {
 	padding:65px 0 0;
 }

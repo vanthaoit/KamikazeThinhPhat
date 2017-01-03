@@ -7,19 +7,21 @@
     <div class="menu_member_top"></div>
     <div class="menu_members_center">
         <ul class="menu_left_members_nav corevalue_nav">
-            @if (strUrl.Contains("directorate"))
+            @if (strUrl.Contains("hoi-dong-quan-tri"))
             {
                 <li><a href="about-directorate.html" class="menu_left_member_item_active">Hội đồng quản trị</a></li>
                 <li><a href="index.php?route=module/bachkhoa" class="gard">Ban kiểm soát</a></li>
                 <li><a href="index.php?route=module/benhnhan">Ban giám đốc</a></li>
                 <li><a href="about-diagram.html" class="diagram">Sơ đồ tổ chức</a></li>
             }
-            else if (strUrl.Contains("diagram"))
+            else if (strUrl.Contains("co-cau-to-chuc"))
             {
-                <li><a href="about-directorate.html" class="">Hội đồng quản trị</a></li>
-                <li><a href="index.php?route=module/bachkhoa" class="gard">Ban kiểm soát</a></li>
-                <li><a href="index.php?route=module/benhnhan">Ban giám đốc</a></li>
-                <li><a href="about-diagram.html" class="menu_left_member_item_active">Sơ đồ tổ chức</a></li>
+                <li><a href="about.index-co-cau-to-chuc.html" class="menu_left_member_item_active">Sơ đồ tổ chức</a></li>
+                <li><a href="#" class="">Hội đồng quản trị</a></li>
+                <li><a href="#">Ban giám đốc</a></li>
+                <li><a href="#" class="gard">Ban kiểm soát</a></li>
+                
+                
             }
         </ul>
     </div>

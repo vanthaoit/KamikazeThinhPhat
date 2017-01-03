@@ -1,10 +1,28 @@
-﻿@{
+﻿@model KamikazeThinhPhat.Web.Models.FeedbackViewModel
+@using BotDetect.Web.Mvc
+@{
     ViewBag.Title = "Contact Index";
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 
 @{ Html.RenderAction("Banner", "Portfolio");}
 
+@section FooterJS{
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBY9-9EcRD3c0dL6gsT_Dd5Y4mlbW2Vgp0"></script>
+<script src="~/Assets/client/js/controllers/Contact.js"></script>
+
+}
+<style>
+    #map{
+        height:400px;
+    }
+</style>
+
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
+<input type="hidden" id="hidAddress" value="@Model.ContactDetail.Name<br />Điện thoại: @Model.ContactDetail.Phone <br>Địa chỉ: @Model.ContactDetail.Address" />
+<input type="hidden" id="hidLat" value="@Model.ContactDetail.Lat" />
+<input type="hidden" id="hidLng" value="@Model.ContactDetail.Lng" />
+<input type="hidden" id="hidName" value="@Model.ContactDetail.Name" />
 
 <div class="content_cen about-bg page-bg">
     <div class="wrapper">
@@ -25,9 +43,9 @@
                     <!-- Content Row -->
                     <div class="">
                         <!-- Map Column -->
-                        <div class="col-md-8">
+                        <div class="col-md-8" id="map">
                             <!-- Embedded Google Map -->
-                            <iframe class="googlemaps" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d380510.6741687111!2d-88.01234121699822!3d41.83390417061058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1455598377120" style="border:0" allowfullscreen=""></iframe>
+                            
                         </div>
                         <!-- Contact Details Column -->
                         <div class="col-md-4 portfolio_summary">
@@ -36,13 +54,13 @@
                             </p>
                             <div class="portfolio_summary_content">
                                 <span>
-                                    <strong>Điện thoại :</strong> 123.456.7890
+                                    <strong>Điện thoại :</strong> @Model.ContactDetail.Phone
                                     <br/>
                                   
                                     <strong>Email :</strong> <a href="mailto:name@example.com">name@example.com</a>
                                     <br/>
                                   
-                                    <strong>Địa chỉ :</strong> "Địa chỉ công ty ThinhPhat"
+                                    <strong>Địa chỉ :</strong> @Model.ContactDetail.Address
                                 </span>
                             </div>
 
@@ -56,33 +74,51 @@
                     <div class="">
                         <div class="col-md-8">
                             <h3 class="contact-agileits2 portfolio_summary_title">Gửi thông tin phản hồi</h3>
-                            <form action="#" method="post">
+                    
+                           
+
+                            @using (Html.BeginForm("SendFeedback", "Contact", FormMethod.Post))
+                            {
+                                if (ViewData["SuccessMsg"] != null)
+                                {
+                                    <div class="alert alert-success" role="alert">
+                                        <strong>Chúc mừng bạn! </strong> gửi phản hồi thành công.
+                                        <br />Chúng tôi sẽ liên hệ lại sớm nhất có thể.
+                                    </div>
+                                }
+
+                                @Html.ValidationSummary(false, "", new { @class = "error" })
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Họ và Tên:</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Please enter your name." required="">
+                                        @Html.TextBoxFor(model=>model.Name, new { @class= "textbox form-control" })
                                     </div>
                                 </div>
-                                <div class="control-group form-group">
-                                    <div class="controls">
-                                        <label>Số điện thoại:</label>
-                                        <input type="tel" class="form-control" id="phone" placeholder="Please enter your phone number." required="">
-                                    </div>
-                                </div>
+                              
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Email:</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Please enter your email address." required="">
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "textbox form-control" })
                                     </div>
                                 </div>
                                 <div class="control-group form-group">
                                     <div class="controls">
                                         <label>Nội dung phản hồi:</label>
-                                        <textarea rows="10" cols="100" class="form-control" id="message" placeholder="Please enter your message" maxlength="999" style="resize:none" required=""></textarea>
+                                        @Html.TextAreaFor(model => model.Message,new { @class= "form-control" })
                                     </div>
                                 </div>
-                                <button href="#" type="submit" class="btn btn-primary">Gửi</button>
-                            </form>
+
+                                MvcCaptcha contactCaptcha = new MvcCaptcha("contactCaptcha");
+                                @Html.Captcha(contactCaptcha)
+                                <br/>
+                                @Html.TextBox("CaptchaCode")
+                                <br/><br />
+                                <input type="submit" class="btn-primary btn" value="Gửi">
+                                <br/>
+                                <div class="clearfix"> </div>
+                            }
+                                
+                      
                         </div>
 
                     </div>

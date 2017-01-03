@@ -12,6 +12,7 @@
 
 .agile{
     opacity: 0.8;
+    margin-bottom:10%;
     background-color: #1a1c28;
     text-align: center;
     padding: 0;
@@ -374,21 +375,23 @@ ul.about_menu_nav li a.about_menu_item_last{
 }
 .content_wrapper{
     /*width:1000px;*/
+    width:100%;
     background:#e1eaef url("../images/bg_content.jpg") repeat-x left top;
     float: left;
     /*border-bottom: 5px solid #d9dcde;*/
 	min-height:453px;
 }
 .content_wrapper_portfolio{
-    background:#e1eaef url("../images/background.jpg") repeat-x left top !important;
+    background:#013453 url("../images/background.jpg") repeat-x left top !important;
 }
 .content_pic{
-    width: 335px;
-	height: 400px;
+    width: 300px;
+	height: 300px;
     background: url("../images/bg_pic.png") no-repeat left top;
 	margin-right: -52px; 
 	float: right;
 }
+
 .content_img{
     margin-left: 21px;
 	margin-top: 12px;
@@ -855,7 +858,14 @@ ul.menu_left_members_nav li a:hover, ul.menu_left_members_nav li a.menu_left_mem
 }
 .portfolio_summary_content span{
     font-size:10pt;
+
 }
+
+.our_partner div span{
+    font-size:10pt;
+    color:white;
+}
+
 .detail{
       /*background-image: url("../images/btn_detail.png");*/
       width:26px;
