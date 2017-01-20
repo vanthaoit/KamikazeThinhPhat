@@ -1,6 +1,8 @@
-﻿@{
+﻿@model KamikazeThinhPhat.Web.Models.ProductViewModel
+@{
     ViewBag.Title = "Ledger Index";
     Layout = "~/Views/Shared/Layouts.cshtml";
+    var listProductViewModel = (IEnumerable<KamikazeThinhPhat.Web.Models.ProductViewModel>)ViewBag.listProductViewModel;
 }
 
 @{ Html.RenderAction("Banner", "Portfolio");}
@@ -14,6 +16,9 @@
                         <h3 class="">Hồ sơ pháp lý </h3>
                     </a>
                 </li>
+                <li>
+                     <h3 class="">@Model.Name</h3>
+                </li>
                
             </ul>
         </div>
@@ -24,30 +29,42 @@
                        <div class="menu_member_top"></div>
                        <div class="menu_members_center">
                            <ul class="menu_left_members_nav corevalue_nav">
-                               <li><a href="index.php?route=module/tongquan">Quỹ Hỗ Trợ Giáo Dục Lê Mộng Đào</a></li>
-                               <li><a href="index.php?route=module/bachkhoa" class="menu_left_member_item_active">Trường Đại Học bách Khoa TP.HCM </a></li>
-                               <li><a href="index.php?route=module/benhnhan">Hội Bệnh Nhân Nghèo TP.HCM</a></li>
-                               <li><a href="index.php?route=module/hiephoi">Hiệp Hội Nhà Thầu Việt Nam</a></li>
-                               <li><a href="index.php?route=module/tochuc">Các Tổ Chức Khác </a></li>
+                               @foreach (var item in listProductViewModel)
+                               {
+                                   var Url = "/ledger-index-" + item.ID + ".html";
+                                   var active = Model.Name;
+                                   if (item.Name.Contains(active))
+                                   {
+                                    <li><a href="@Url" class="menu_left_member_item_active">@item.Name</a></li>
+                                   }
+                                   else
+                                   {
+                                    <li><a href="@Url">@item.Name</a></li>
+                                   }
+
+                               }
+                               
+                               
+
                            </ul>
                        </div>
                        <div class="menu_member_bottom"></div>
                    </div>
                    <div class="col-md-9 portfolio_summary">
-                       <div class="portfolio_summary_title">TRƯỜNG ĐẠI HỌC BÁCH KHOA TP.HCM</div>
-                       <div class="portfolio_summary_content">
-                        
-                            <span >
-                                Trong chiến lược phát triển của mình, Hòa Bình luôn coi trọng và hiểu rõ sự phát triển của doanh nghiệp gắn liền với sự phát triển của xã hội mà trong đó giáo dục là nền tảng.<br>
-                                <br>
-                                Với đặc thù ngành nghề chính là xây dựng, vì thế mỗi năm Hòa Bình tuyển dụng rất nhiều đội ngũ kỹ sư xây dựng, kiến trúc, cơ điện… từ các trường chuyên ngành đào tạo trong cả nước. Trong đó, phần lớn đội ngũ này tốt nghiệp từ trường ĐH Bách Khoa TP.HCM. Với mục tiêu góp phần nâng cao hỗ trợ chuyên sâu chất lượng giáo dục, mang tính thực tiễn cao, ngày 12/9/2011 Hòa Bình và Khoa Kỹ thuật Xây dựng Trường ĐH Bách Khoa TP.HCM đã ký kết hợp tác chiến lược dài hạn. Theo đó, hai bên liên kết toàn diện về đầu tư phát triển khoa học, kỹ thuật công nghệ và đào tạo nhân lực, các dịch vụ chuyên ngành… Đồng thời, Hòa Bình sẽ tổ chức các chương trình tham quan công trường chia sẻ kinh nghiệm thực tế cho giảng viên, sinh viên về các công nghệ kỹ thuật xây dựng tiên tiên của các nước mà Hòa Bình đang áp dụng.<br>
-                                <br>
-                                Nằm trong việc hợp tác này, Hòa Bình đã cùng Quỹ Hỗ trợ giáo dục Lê Mộng Đào tài trợ kinh phí 800 triệu đồng cho Khoa Kỹ thuật Xây dựng Trường Đại học Bách Khoa TP.HCM cải tạo, nâng cấp giảng đường Hòa Bình đạt tiêu chuẩn quốc tế. Đây là giảng đường được xây dựng và đầu tư mới hoàn toàn trện cơ sở của giảng đường 110 B6 cũ, được xây dựng từ năm 1957 nay đã xuống cấp. Giảng đường có kinh phí đầu tư khoảng 1,5 tỉ đồng.
-                            </span>
-                          
-                           
+                       <div class="portfolio_summary_title">@Model.Name</div>
+                       <div class="portfolio_summary_content ledger_content">
+
+                            @Html.Raw(@Model.Content)
 
                        </div>
+                     
+                        <div class="hover01 column">
+                            <div>
+                                <figure>
+                                    <img class="img-responsive img-hover" src="@Model.Image">
+                                </figure>
+                            </div>
+                        </div>
 
                    </div>
                </div>

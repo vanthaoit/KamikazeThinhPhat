@@ -14,6 +14,7 @@
         }
 
         function get(url, params, success, failure) {
+            authenticationService.setHeader();
             $http.get(url, params).then(function (result) {
                 success(result);
             }, function (error) {

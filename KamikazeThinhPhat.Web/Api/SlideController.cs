@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace KamikazeThinhPhat.Web.Api
 {
     [RoutePrefix("api/slide")]
+    [Authorize]
     public class SlideController : ApiControllerBase
     {
         #region Initialize

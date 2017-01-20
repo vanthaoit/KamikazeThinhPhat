@@ -860,6 +860,9 @@ ul.menu_left_members_nav li a:hover, ul.menu_left_members_nav li a.menu_left_mem
     font-size:10pt;
 
 }
+.ledger_content p{
+    color:black !important;
+}
 
 .our_partner div span{
     font-size:10pt;

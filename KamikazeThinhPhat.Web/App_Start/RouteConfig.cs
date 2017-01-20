@@ -78,6 +78,14 @@ namespace KamikazeThinhPhat.Web
             routes.MapRoute(
                 name: "Ledger Index",
                 url: "ledger-index.html",
+                defaults: new { controller = "Ledger", action = "Default", id = UrlParameter.Optional },
+                namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
+
+            );
+
+            routes.MapRoute(
+                name: "Ledger Index Sub",
+                url: "ledger-index-{id}.html",
                 defaults: new { controller = "Ledger", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
 

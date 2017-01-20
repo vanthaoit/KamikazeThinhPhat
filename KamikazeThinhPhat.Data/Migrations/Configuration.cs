@@ -1,5 +1,8 @@
 ﻿namespace KamikazeThinhPhat.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Model.Models;
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Validation;
     using System.Diagnostics;
@@ -27,7 +30,37 @@
             //    );
             //
             CreateContactDetail(context);
+            //CreateUser(context);
         }
+
+        //private void CreateUser(KamikazeThinhPhatDbContext context)
+        //{
+        //    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new KamikazeThinhPhatDbContext()));
+
+        //    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new KamikazeThinhPhatDbContext()));
+
+        //    var user = new ApplicationUser()
+        //    {
+        //        UserName = "kamikaze",
+        //        Email = "vietnamthaotranvan@gmail.com",
+        //        EmailConfirmed = true,
+        //        //BirthDay = DateTime.Now,
+        //        //FullName = "Technology Education"
+        //    };
+
+        //    manager.Create(user, "123456");
+
+        //    if (!roleManager.Roles.Any())
+        //    {
+        //        roleManager.Create(new IdentityRole { Name = "Admin" });
+        //        //roleManager.Create(new IdentityRole { Name = "User" });
+        //    }
+
+        //    //var adminUser = manager.FindByEmail("vietnamthaotranvan@gmail.com");
+
+        //    //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+        //}
+
         private void CreateContactDetail(KamikazeThinhPhatDbContext context)
         {
             if(context.ContactDetails.Count() == 0)
@@ -60,5 +93,7 @@
                 }
             }
         }
+
+
     }
 }
