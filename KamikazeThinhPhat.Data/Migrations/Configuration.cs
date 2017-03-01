@@ -29,37 +29,37 @@
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            CreateContactDetail(context);
+            //CreateContactDetail(context);
             //CreateUser(context);
         }
 
-        //private void CreateUser(KamikazeThinhPhatDbContext context)
-        //{
-        //    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new KamikazeThinhPhatDbContext()));
+        private void CreateUser(KamikazeThinhPhatDbContext context)
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new KamikazeThinhPhatDbContext()));
 
-        //    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new KamikazeThinhPhatDbContext()));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new KamikazeThinhPhatDbContext()));
 
-        //    var user = new ApplicationUser()
-        //    {
-        //        UserName = "kamikaze",
-        //        Email = "vietnamthaotranvan@gmail.com",
-        //        EmailConfirmed = true,
-        //        //BirthDay = DateTime.Now,
-        //        //FullName = "Technology Education"
-        //    };
+            var user = new ApplicationUser()
+            {
+                UserName = "KamikazeThinhPhat",
+                Email = "vietnamthaotranvan@gmail.com",
+                EmailConfirmed = true,
+                //BirthDay = DateTime.Now,
+                //FullName = "Technology Education"
+            };
 
-        //    manager.Create(user, "123456");
+            manager.Create(user, "adminktp@123456");
 
-        //    if (!roleManager.Roles.Any())
-        //    {
-        //        roleManager.Create(new IdentityRole { Name = "Admin" });
-        //        //roleManager.Create(new IdentityRole { Name = "User" });
-        //    }
+            if (!roleManager.Roles.Any())
+            {
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                //roleManager.Create(new IdentityRole { Name = "User" });
+            }
 
-        //    //var adminUser = manager.FindByEmail("vietnamthaotranvan@gmail.com");
+            //var adminUser = manager.FindByEmail("vietnamthaotranvan@gmail.com");
 
-        //    //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
-        //}
+            //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+        }
 
         private void CreateContactDetail(KamikazeThinhPhatDbContext context)
         {

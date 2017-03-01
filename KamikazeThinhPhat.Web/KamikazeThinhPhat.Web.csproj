@@ -5143,6 +5143,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Partner\Detail.cshtml" />
     <Content Include="Views\Ledger\Default.cshtml" />
+    <None Include="Properties\PublishProfiles\publish_kamikazeThinhPhat.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\admin\libs\ngBootbox\typings\angularjs\angular.d.ts" />
