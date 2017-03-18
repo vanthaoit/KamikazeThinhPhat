@@ -26,7 +26,7 @@ namespace KamikazeThinhPhat.Web
             routes.MapRoute(
                 name: "Default Index",
                 url: "default-index.html",
-                defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional,alias = "vai-net-ve-thinh-phat" },
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional,alias = "vai-net-ve-thinh-phat" },
                 namespaces: new string[] { "KamikazeThinhPhat.Web.Controllers" }
 
             );

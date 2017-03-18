@@ -1,44 +1,41 @@
 ﻿@model IEnumerable<KamikazeThinhPhat.Web.Models.SlideViewModel>
-<div class="slider">
-    @if (Model.Count() > 0)
-    {
-        foreach (var item in Model)
+
+@{
+    var countSlide = Model.Count();
+}
+<div id="slidey" class="container" data-value="@countSlide" style="display:none;">
+    <ul>
+        @foreach (var item in Model)
         {
-            <ul class="slider-main">
-                <li class="slider-panel">
-                    <img alt="W3layouts" title="Thịnh Phát" src="@item.Image">
-                    <div class="banner-info">
-                        <div class="row">
-                            <div class="col-lg-6 banner-w3ls1">
-                                <h3>@item.Content</h3>
-                            </div>
-                            <div class="col-lg-6 banner-w3ls2">
-                                
-                                <p></p>
-                                <a href="about.index-vai-net-ve-thinh-phat.html">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+            <li>
+                <img src="@item.Image" alt="">
+                <p class='title'>
+                    @item.Name
+                </p>
+                <p class='description'>
+                    <span>@item.Description</span>
 
-            </ul>
+                </p>
+
+            </li>
         }
-    }
-    
-    <div class="slider-extra">
-        <ul class="slider-nav">
-            @if (Model.Count() > 0)
-            {
-                var countDown = Model.Count();
-                for (int i = 1; i <= countDown; i++)
-                {
-                    <li class="slider-item">@i</li>
-                }
 
-            }
-            
-            
-        </ul>
-        <div class="slider-page"> <a class="slider-pre" href="javascript:;;">&lt;</a> <a class="slider-next" href="javascript:;;">&gt;</a> </div>
-    </div>
+    </ul>
 </div>
+
+
+
+<!-- slidey-->
+<script src="~/Assets/client/js/jquery.min.js"></script>
+<script src="~/Assets/client/js/jquery.slidey.js"></script>
+<script src="~/Assets/client/js/jquery.dotdotdot.min.js"></script>
+<script type="text/javascript">
+        var countTamp = $(slidey).attr('data-value') ;
+	    $("#slidey").slidey({
+		    interval: 8000,
+		    listCount: countTamp,
+		    autoplay: false,
+		    showList: true
+	    });
+	    $(".slidey-list-description").dotdotdot();
+</script>

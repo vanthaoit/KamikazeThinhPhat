@@ -98,7 +98,7 @@
     padding: 4px;
     background: #fff;
     box-shadow: 1px 1px 5px #555;
-    margin: -30px 0 20px 20px;
+    /*margin: -30px 0 20px 20px;*/
 }
 .board_item .image img{
     display:block;
@@ -171,7 +171,7 @@
 }
 
 .wrapper {
-    width:1000px;
+    width:82%;
     margin:0 auto;
 
 }
@@ -394,7 +394,7 @@ ul.about_menu_nav li a.about_menu_item_last{
 
 .content_img{
     margin-left: 21px;
-	margin-top: 12px;
+	/*margin-top: 12px;*/
 	background:#fff;
 	padding:5px;
 	box-shadow: 1px 1px 2px #333333;
@@ -425,6 +425,7 @@ ul.about_menu_nav li a.about_menu_item_last{
 }
 .content_text_area p{
     margin-bottom: 16px;
+    text-align: justify;
     color: #104F76;
     font: normal 13px/22px   Arial;
 }

@@ -17,6 +17,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="~/Assets/client/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Assets/client/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Assets/client/css/info.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Assets/client/css/jquery.slidey.min.css" rel="stylesheet" />
 
     <link href="~/Assets/client/css/style.css" rel="stylesheet" />
     <link href="~/Assets/client/css/custom.css" rel="stylesheet" />
@@ -26,34 +27,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- /css files -->
 </head>
 <body>
-    <!-- navigation -->
-   @{ Html.RenderAction("Navigation", "Home");}
-    <!-- /navigation -->
-    <!-- banner section -->
-    
-    <!-- /banner section -->
+    <div class="container">
+        <!-- navigation -->
+        @{ Html.RenderAction("Navigation", "Home");}
+        <!-- /navigation -->
+        <!-- banner section -->
+        <!-- /banner section -->
 
-    @RenderBody()
+        @RenderBody()
 
-    <!--footer-->
-    @{ Html.RenderAction("Footer","Home");}
-    <!--/footer-->
+        <!--footer-->
+        @{ Html.RenderAction("Footer", "Home");}
+        <!--/footer-->
+        <!-- js files -->
+        <script src="~/Assets/client/js/jquery.min.js"></script>
+        <script src="~/Assets/client/js/bootstrap.min.js"></script>
+        <script src="~/Assets/client/js/SmoothScroll.min.js"></script>
+        <!-- js for team section -->
+        <script src="~/Assets/client/js/index.js"></script>
+        <script src="~/Assets/client/js/custom.js"></script>
+        <!-- /js for team section -->
+        <!-- js for banner -->
+        @RenderSection("SliderJS", required: false)
 
-    <!-- js files -->
-    <script src="~/Assets/client/js/jquery.min.js"></script>
-    <script src="~/Assets/client/js/bootstrap.min.js"></script>
-    <script src="~/Assets/client/js/SmoothScroll.min.js"></script>
-    <!-- js for team section -->
-    <script src="~/Assets/client/js/index.js"></script>
-    <script src="~/Assets/client/js/custom.js"></script>
-    <!-- /js for team section -->
+        @RenderSection("FooterJS", required: false)
 
-    <!-- js for banner -->
-    @RenderSection("SliderJS",required:false)
-
-    @RenderSection("FooterJS",required:false)   
-    
-    <!-- /js for banner -->
-    <!-- /js files -->
+        <!-- /js for banner -->
+        <!-- /js files -->
+    </div>
 </body>
 </html>

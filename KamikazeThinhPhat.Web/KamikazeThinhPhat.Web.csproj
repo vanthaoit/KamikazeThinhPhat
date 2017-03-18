@@ -4767,6 +4767,7 @@
     <Content Include="Assets\client\css\fancy.css" />
     <Content Include="Assets\client\css\font-awesome.min.css" />
     <Content Include="Assets\client\css\info.css" />
+    <Content Include="Assets\client\css\jquery.slidey.min.css" />
     <Content Include="Assets\client\css\navigation.css" />
     <Content Include="Assets\client\css\style.css" />
     <Content Include="Assets\client\css\typo.css" />
@@ -4779,6 +4780,9 @@
     <Content Include="Assets\client\images\banner4.jpg" />
     <Content Include="Assets\client\images\banner5.jpg" />
     <Content Include="Assets\client\images\banner_2.jpg" />
+    <Content Include="Assets\client\images\banner_flash_1.swf" />
+    <Content Include="Assets\client\images\banner_standarnd_1.jpg" />
+    <Content Include="Assets\client\images\banner_standarnd_2.jpg" />
     <Content Include="Assets\client\images\bg_about.jpg" />
     <Content Include="Assets\client\images\bg_content.jpg" />
     <Content Include="Assets\client\images\bg_copy.png" />
@@ -4814,6 +4818,7 @@
     <Content Include="Assets\client\images\main_bg.png" />
     <Content Include="Assets\client\images\m_left_arrow_off.png" />
     <Content Include="Assets\client\images\m_left_arrow_on.png" />
+    <Content Include="Assets\client\images\navbar_flash_thinhphat.swf" />
     <Content Include="Assets\client\images\port-img1.jpg" />
     <Content Include="Assets\client\images\port-img2.jpg" />
     <Content Include="Assets\client\images\port-img3.jpg" />
