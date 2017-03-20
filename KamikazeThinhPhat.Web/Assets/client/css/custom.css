@@ -52,7 +52,7 @@
 .footer p{
     color:darkblue;
     
-}
+} 
 
 
 @media only screen and (min-width:1366px) and (max-width:1444px){
@@ -85,7 +85,7 @@
         
     }
     .about_kmkz .board_item .image img{
-            width: 560px;
+            width: 760px;
             
     }
     .about_kmkz .content_text_area{
@@ -103,7 +103,7 @@
         float:left;
     }
     .contact_kmkz .portfolio_summary p{
-        padding-right:150px;
+       
     }
  
     .portfolio_summary_title{
@@ -117,6 +117,7 @@
     }
     #map{
         margin:10px;
+        width:680px;
     }
 }
 @media only screen and (min-width:1280px) and (max-width:1365px){
@@ -149,7 +150,7 @@
         
     }
     .about_kmkz .board_item .image img{
-            width: 560px;
+            width: 760px;
             
     }
     .about_kmkz .content_text_area{
@@ -167,67 +168,7 @@
         float:left;
     }
     .contact_kmkz .portfolio_summary p{
-        padding-right:150px;
-    }
- 
-    .portfolio_summary_title{
-        padding-right:10px;
-    }
-    .portfolio_kmkz .content_wrapper_portfolio .portfolio_container figure img{
-        width:100%;
-    }
-    .ledger_kmkz .portfolio_title .menu_member_top,.menu_members_center,.menu_member_bottom{
-        width:auto !important;
-    }
-    #map{
-        margin:10px;
-    }
-}
-@media only screen and (min-width:1080px) and (max-width:1279px){
-    .container{
-      
-        width:1170px;
-        padding-right:0px;
-        padding-left:0px;
-    }
-     .innerpage-banner embed{
-        width:1170px;
-      
-    }
-     .home_imagination embed{
-         width:1170px;
        
-     }
-     .home_imagination{
-         margin-top:0px;
-     }
-     
-   
-    /* about*/
-    .board_item .image{
-        padding:0px !important;
-        
-    }
-    .about_kmkz .board_item .image img{
-            width: 560px;
-            
-    }
-    .about_kmkz .content_text_area{
-        margin-left:20px;
-        margin-right:20px;
-    }
-
-    .portfolio_summary p{
-        margin-top:15px;
-        line-height:20px !important;
-    }
-
-    .portfolio_kmkz .portfolio_summary_title{
-        width:730px;
-        float:left;
-    }
-    .contact_kmkz .portfolio_summary p{
-        padding-right:150px;
     }
  
     .portfolio_summary_title{
@@ -241,22 +182,32 @@
     }
     #map{
         margin:10px;
+        width:680px;
     }
-}
-@media only screen and (min-width:1024px) and (max-width:1079px){
+} /*end 1280*/
+
+@media only screen and (min-width:1080px) and (max-width:1279px){
+    .navbar-wrapper{
+      
+    }
+      ul.nav.navbar-nav.navbar-right{
+         margin:0px;
+     }
     .container{
       
-        width:730px;
+        width:1080px;
         padding-right:0px;
         padding-left:0px;
     }
      .innerpage-banner embed{
-        width:730px;
-        height:130px;
+        width:1080px;
+        height:193px;
+        
     }
      .home_imagination embed{
-         width:730px;
-         height:31px;
+         width:1080px;
+         height:46px;
+         
      }
      .home_imagination{
          margin-top:0px;
@@ -287,7 +238,7 @@
         float:left;
     }
     .contact_kmkz .portfolio_summary p{
-        padding-right:150px;
+        
     }
  
     .portfolio_summary_title{
@@ -299,25 +250,127 @@
     .ledger_kmkz .portfolio_title .menu_member_top,.menu_members_center,.menu_member_bottom{
         width:auto !important;
     }
+    .about_kmkz #menu_organize{
+        margin-left:90px;
+    }
+    .about_kmkz .menu_member_top,.about_kmkz .menu_members_center,.about_kmkz .menu_member_bottom{
+        
+    }
+    .ledger_kmkz .portfolio_title{
+        margin-left:90px;
+    }
+    .ledger_kmkz .column{
+        width:810px;
+    }
     #map{
         margin:10px;
+        width:860px;
     }
-}
+} /*end 1080*/
+@media only screen and (min-width:1024px) and (max-width:1079px){
+    .navbar-wrapper{
+      
+    }
+      ul.nav.navbar-nav.navbar-right{
+         margin:0px;
+     }
+    .container{
+      
+        width:1024px;
+        padding-right:0px;
+        padding-left:0px;
+    }
+     .innerpage-banner embed{
+        width:1024px;
+        height:190px;
+        
+    }
+     .home_imagination embed{
+         width:1024px;
+         height:45px;
+         
+     }
+     .home_imagination{
+         margin-top:0px;
+     }
+     
+   
+    /* about*/
+    .board_item .image{
+        padding:0px !important;
+        
+    }
+    .about_kmkz .board_item .image img{
+            width: 560px;
+            
+    }
+    .about_kmkz .content_text_area{
+        margin-left:20px;
+        margin-right:20px;
+    }
+
+    .portfolio_summary p{
+        margin-top:15px;
+        line-height:20px !important;
+    }
+
+    .portfolio_kmkz .portfolio_summary_title{
+        width:730px;
+        float:left;
+    }
+    .contact_kmkz .portfolio_summary p{
+        
+    }
+ 
+    .portfolio_summary_title{
+        padding-right:10px;
+    }
+    .portfolio_kmkz .content_wrapper_portfolio .portfolio_container figure img{
+        width:100%;
+    }
+    .ledger_kmkz .portfolio_title .menu_member_top,.menu_members_center,.menu_member_bottom{
+        width:auto !important;
+    }
+    .about_kmkz #menu_organize{
+        margin-left:90px;
+    }
+    .about_kmkz .menu_member_top,.about_kmkz .menu_members_center,.about_kmkz .menu_member_bottom{
+        
+    }
+    .ledger_kmkz .portfolio_title{
+        margin-left:90px;
+    }
+    .ledger_kmkz .column{
+        width:810px;
+    }
+    #map{
+        margin:10px;
+        width:810px;
+    }
+} /* end 1024*/
 
 @media only screen and (min-width:991px) and (max-width:1023px){
+    .navbar-wrapper{
+      margin-top:130px;
+    }
+      ul.nav.navbar-nav.navbar-right{
+         margin:0px;
+     }
     .container{
       
-        width:730px;
+        width:853px;
         padding-right:0px;
         padding-left:0px;
     }
      .innerpage-banner embed{
-        width:730px;
-        height:130px;
+        width:853px;
+        height:152px;
+        
     }
      .home_imagination embed{
-         width:730px;
-         height:31px;
+         width:853px;
+         height:36px;
+         
      }
      .home_imagination{
          margin-top:0px;
@@ -325,12 +378,12 @@
      
    
     /* about*/
-    .board_item .image{
+    .about_kmkz .board_item .image{
         padding:0px !important;
-        
+        margin-top:10px;
     }
     .about_kmkz .board_item .image img{
-            width: 560px;
+            width: 660px;
             
     }
     .about_kmkz .content_text_area{
@@ -348,7 +401,7 @@
         float:left;
     }
     .contact_kmkz .portfolio_summary p{
-        padding-right:150px;
+        
     }
  
     .portfolio_summary_title{
@@ -360,12 +413,106 @@
     .ledger_kmkz .portfolio_title .menu_member_top,.menu_members_center,.menu_member_bottom{
         width:auto !important;
     }
+    .about_kmkz #menu_organize{
+        margin-left:90px;
+    }
+    .about_kmkz .menu_member_top,.about_kmkz .menu_members_center,.about_kmkz .menu_member_bottom{
+        
+    }
+    .ledger_kmkz .portfolio_title{
+        margin-left:90px;
+    }
+    .ledger_kmkz .column{
+        
+    }
     #map{
         margin:10px;
+      
     }
 }
 
-@media only screen and (min-width:800px) and (max-width:990px){
+@media only screen and (min-width:837px) and (max-width:990px){
+    .navbar-wrapper{
+      margin-top:130px;
+    }
+      ul.nav.navbar-nav.navbar-right{
+         margin:0px;
+     }
+    .container{
+      
+        width:853px;
+        padding-right:0px;
+        padding-left:0px;
+    }
+     .innerpage-banner embed{
+        width:853px;
+        height:152px;
+        
+    }
+     .home_imagination embed{
+         width:853px;
+         height:36px;
+         
+     }
+     .home_imagination{
+         margin-top:0px;
+     }
+     
+   
+    /* about*/
+    .about_kmkz .board_item .image{
+        padding:0px !important;
+        margin-top:10px;
+    }
+    .about_kmkz .board_item .image img{
+            width: 660px;
+            
+    }
+    .about_kmkz .content_text_area{
+        margin-left:20px;
+        margin-right:20px;
+    }
+
+    .portfolio_summary p{
+        margin-top:15px;
+        line-height:20px !important;
+    }
+
+    .portfolio_kmkz .portfolio_summary_title{
+        width:730px;
+        float:left;
+    }
+    .contact_kmkz .portfolio_summary p{
+        
+    }
+ 
+    .portfolio_summary_title{
+        padding-right:10px;
+    }
+    .portfolio_kmkz .content_wrapper_portfolio .portfolio_container figure img{
+        width:100%;
+    }
+    .ledger_kmkz .portfolio_title .menu_member_top,.menu_members_center,.menu_member_bottom{
+        width:auto !important;
+    }
+    .about_kmkz #menu_organize{
+        margin-left:90px;
+    }
+    .about_kmkz .menu_member_top,.about_kmkz .menu_members_center,.about_kmkz .menu_member_bottom{
+        
+    }
+    .ledger_kmkz .portfolio_title{
+        margin-left:90px;
+    }
+    .ledger_kmkz .column{
+        
+    }
+    #map{
+        margin:10px;
+      
+    }
+} /**/
+@media only screen and (min-width:800px) and (max-width:836px){
     .container{
       
         width:730px;
@@ -426,31 +573,32 @@
     }
 }
 @media only screen and (min-width:768px) and (max-width:799px){
-    .navbar-wrapper{
+     .navbar-wrapper{
         margin-top:0px;
     }
+   
     .container{
       
-        width:320px;
+        width:736px;
         padding-right:0px;
         padding-left:0px;
     }
     .innerpage-banner{
-        height:60px;
+        height:131px;
     }
      .innerpage-banner embed{
-         height:60px;
-        width:320px;
+         height:131px;
+        width:736px;
 
       
     }
     .home_imagination{
          margin-top:0px;
-         height:18px;
+         height:32px;
      }
      .home_imagination embed{
-          height:18px;
-         width:320px;
+          height:32px;
+         width:736px;
         
      }
    
@@ -521,7 +669,7 @@
         
     }
     .content_pic{
-        width:auto !important;
+        width:200px !important;
         height:auto !important;
         float:none !important;
         margin-right:0px !important;
@@ -531,43 +679,48 @@
         height:240px !important;
         margin-left:0px !important;
     }
+    .ledger_kmkz .portfolio_title{
+        min-height:130px;
+    }
     .ledger_kmkz .portfolio_title .menu_member_top,.ledger_kmkz .portfolio_title .menu_members_center,.ledger_kmkz .portfolio_title .menu_member_bottom{
-        width:auto !important;
-        float:none;
+        /*width:auto !important;
+        float:none;*/
+        float:left;
     }
     .contact_kmkz .contact-agileits2{
         font-size:20px !important;
     }
     #map{
         margin:10px;
+        
     }
-}
+}/**/
 @media only screen and (min-width:736px) and (max-width:767px){
    .navbar-wrapper{
         margin-top:0px;
     }
     .container{
       
-        width:320px;
+        width:736px;
         padding-right:0px;
         padding-left:0px;
     }
     .innerpage-banner{
-        height:60px;
+        height:131px;
     }
      .innerpage-banner embed{
-         height:60px;
-        width:320px;
+         height:131px;
+        width:736px;
 
       
     }
     .home_imagination{
          margin-top:0px;
-         height:18px;
+         height:32px;
      }
      .home_imagination embed{
-          height:18px;
-         width:320px;
+          height:32px;
+         width:736px;
         
      }
    
@@ -638,7 +791,7 @@
         
     }
     .content_pic{
-        width:auto !important;
+        width:200px !important;
         height:auto !important;
         float:none !important;
         margin-right:0px !important;
@@ -648,9 +801,13 @@
         height:240px !important;
         margin-left:0px !important;
     }
+    .ledger_kmkz .portfolio_title{
+        min-height:130px;
+    }
     .ledger_kmkz .portfolio_title .menu_member_top,.ledger_kmkz .portfolio_title .menu_members_center,.ledger_kmkz .portfolio_title .menu_member_bottom{
-        width:auto !important;
-        float:none;
+        /*width:auto !important;
+        float:none;*/
+        float:left;
     }
     .contact_kmkz .contact-agileits2{
         font-size:20px !important;
@@ -665,26 +822,26 @@
     }
     .container{
       
-        width:320px;
+        width:667px;
         padding-right:0px;
         padding-left:0px;
     }
     .innerpage-banner{
-        height:60px;
+        height:119px;
     }
      .innerpage-banner embed{
-         height:60px;
-        width:320px;
+         height:119px;
+        width:667px;
 
       
     }
     .home_imagination{
          margin-top:0px;
-         height:18px;
+         height:29px;
      }
      .home_imagination embed{
-          height:18px;
-         width:320px;
+          height:29px;
+         width:667px;
         
      }
    
@@ -755,7 +912,7 @@
         
     }
     .content_pic{
-        width:auto !important;
+        width:200px !important;
         height:auto !important;
         float:none !important;
         margin-right:0px !important;
@@ -765,9 +922,13 @@
         height:240px !important;
         margin-left:0px !important;
     }
+    .ledger_kmkz .portfolio_title{
+        min-height:130px;
+    }
     .ledger_kmkz .portfolio_title .menu_member_top,.ledger_kmkz .portfolio_title .menu_members_center,.ledger_kmkz .portfolio_title .menu_member_bottom{
-        width:auto !important;
-        float:none;
+        /*width:auto !important;
+        float:none;*/
+        float:left;
     }
     .contact_kmkz .contact-agileits2{
         font-size:20px !important;
@@ -782,26 +943,26 @@
     }
     .container{
       
-        width:320px;
+        width:640px;
         padding-right:0px;
         padding-left:0px;
     }
     .innerpage-banner{
-        height:60px;
+        height:114px;
     }
      .innerpage-banner embed{
-         height:60px;
-        width:320px;
+         height:114px;
+        width:640px;
 
       
     }
     .home_imagination{
          margin-top:0px;
-         height:18px;
+         height:27px;
      }
      .home_imagination embed{
-          height:18px;
-         width:320px;
+          height:27px;
+         width:640px;
         
      }
    
@@ -872,7 +1033,7 @@
         
     }
     .content_pic{
-        width:auto !important;
+        width:200px !important;
         height:auto !important;
         float:none !important;
         margin-right:0px !important;
@@ -882,9 +1043,13 @@
         height:240px !important;
         margin-left:0px !important;
     }
+    .ledger_kmkz .portfolio_title{
+        min-height:130px;
+    }
     .ledger_kmkz .portfolio_title .menu_member_top,.ledger_kmkz .portfolio_title .menu_members_center,.ledger_kmkz .portfolio_title .menu_member_bottom{
-        width:auto !important;
-        float:none;
+        /*width:auto !important;
+        float:none;*/
+        float:left;
     }
     .contact_kmkz .contact-agileits2{
         font-size:20px !important;
@@ -894,31 +1059,31 @@
     }
 }
 @media only screen and (min-width:600px) and (max-width:639px){
-    .navbar-wrapper{
+     .navbar-wrapper{
         margin-top:0px;
     }
     .container{
       
-        width:320px;
+        width:600px;
         padding-right:0px;
         padding-left:0px;
     }
     .innerpage-banner{
-        height:60px;
+        height:91px;
     }
      .innerpage-banner embed{
-         height:60px;
-        width:320px;
+         height:107px;
+        width:600px;
 
       
     }
     .home_imagination{
          margin-top:0px;
-         height:18px;
+         height:26px;
      }
      .home_imagination embed{
-          height:18px;
-         width:320px;
+          height:26px;
+         width:600px;
         
      }
    
@@ -989,7 +1154,7 @@
         
     }
     .content_pic{
-        width:auto !important;
+        width:200px !important;
         height:auto !important;
         float:none !important;
         margin-right:0px !important;
@@ -999,9 +1164,13 @@
         height:240px !important;
         margin-left:0px !important;
     }
+    .ledger_kmkz .portfolio_title{
+        min-height:130px;
+    }
     .ledger_kmkz .portfolio_title .menu_member_top,.ledger_kmkz .portfolio_title .menu_members_center,.ledger_kmkz .portfolio_title .menu_member_bottom{
-        width:auto !important;
-        float:none;
+        /*width:auto !important;
+        float:none;*/
+        float:left;
     }
     .contact_kmkz .contact-agileits2{
         font-size:20px !important;
@@ -1141,11 +1310,14 @@
         padding-right:0px;
         padding-left:0px;
     }
+    .header_wrapper{
+        height:39px !important;
+    }
     .innerpage-banner{
-        height:85px;
+        height:86px;
     }
      .innerpage-banner embed{
-         height:85px;
+         height:86px;
         width:480px;
 
       
@@ -1248,7 +1420,7 @@
         margin:10px;
     }
 
-}
+} /*end 480*/
 @media only screen and (min-width:414px) and (max-width:479px){
     .navbar-wrapper{
         margin-top:0px;
@@ -1489,16 +1661,19 @@
     }
     .container{
       
-        width:320px;
+        width:375px;
         padding-right:0px;
         padding-left:0px;
+    }
+    .header_wrapper{
+        height:38px;
     }
     .innerpage-banner{
         height:60px;
     }
      .innerpage-banner embed{
          height:60px;
-        width:320px;
+        width:375px;
 
       
     }
@@ -1508,7 +1683,7 @@
      }
      .home_imagination embed{
           height:18px;
-         width:320px;
+         width:375px;
         
      }
    
@@ -1716,4 +1891,4 @@
     #map{
         margin:10px;
     }
-}
+} /*end 320*/
