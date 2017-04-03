@@ -30,7 +30,7 @@
             //    );
             //
             //CreateContactDetail(context);
-            //CreateUser(context);
+            CreateUser(context);
         }
 
         private void CreateUser(KamikazeThinhPhatDbContext context)

@@ -28,6 +28,7 @@ namespace KamikazeThinhPhat.Web.Controllers
         {
             return View();
         }
+        
 
         [ChildActionOnly]
         public ActionResult Navigation()
@@ -53,5 +54,6 @@ namespace KamikazeThinhPhat.Web.Controllers
         {
             return PartialView();
         }
+       
     }
 }
